@@ -34,6 +34,7 @@ composer setup
 
 #NONE OF THE BELOW HAVE BEEN CONFIGURED YET - I DON'T KNOW WHERE TO PUT THEM
 
+#ENVIRONMENT CONFIGURATION
 #Environment setup
 php artisan pterodactyl:env
 
@@ -49,6 +50,7 @@ php artisan db:seed
 #Create an admin account
 php artisan pterodactyl:user
 
+#QUEUE LISTENERS
 #Configure Crontab so server tasks are queued
 crontab -e
 * * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1
