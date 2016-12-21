@@ -15,7 +15,7 @@ Pterodactyl requires a database. MariaDB is the recommended database.
 
 The following command creates a container using the MariaDB image. It also configures the necessary environment settings for the database to function properly:
 
-`docker run -it --name pterodb -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=pterodb -e MYSQL_USER=pterodactyl -e MYSQL_PASSWORD=pterodactylpassword --name pterodb -d mariadb`
+`docker run -it -p 3306:3306 -v /srv/pterodactyl/database:/var/lib/mysql --name pterodb -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=pterodb -e MYSQL_USER=pterodactyl -e MYSQL_PASSWORD=pterodactylpassword --name pterodb -d mariadb`
 
 **Pterodactyl Container (pterophp)**
 
