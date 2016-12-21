@@ -34,10 +34,7 @@ RUN chmod +x /var/www/html/pterodactyl/entrypoint.sh \
 ENTRYPOINT ["/var/www/html/pterodactyl/entrypoint.sh"]
 
 
-
-
-
-#QUEUE LISTENERS - I'M NOT EVEN SURE THIS IS NECESSARY...?
+#QUEUE LISTENERS
 #Configure Crontab so server tasks are queued
 crontab -e
 * * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1
