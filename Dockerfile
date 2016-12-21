@@ -6,7 +6,7 @@ RUN yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php
  && ln -s /usr/bin/php70-phar /usr/bin/php-phar
 
 #We have configuration files in a directory that need to be copied up
-COPY ./locationatgithub/
+COPY ./manifest/ /
 
 #We need to specify the directory we want the following RUN commands to affect
 WORKDIR /var/www/html/pterodactyl/
@@ -31,6 +31,7 @@ RUN chmod +x /var/www/html/pterodactyl/entrypoint.sh \
 #Configure Composer
 #DO WE NEED TO DO ANYTHING ELSE AFTER WE RUN composer setup?
 
+ENTRYPOINT ["/var/www/html/pterodactyl/entrypoint.sh"]
 
 
 
