@@ -34,8 +34,7 @@ The following command creates a container using the NGINX image. It exposes port
 `docker run -it -p 80:80 -p 443:443 -v /srv/pterodactyl/.env:/var/www/html/pterodactyl/.env --link pterophp --link pterodb -e db_host=pterodb -e db_port=3306 -e db_name=pterodb -e db_user=ptero -e db_pass=pterodactylpassword -e panel_url= -e timezone="America/New_York" -e email_driver=mail -e panel_email=foo@bar.org --name pteroweb nginx`
 
 - **Dockerfile RUN1** Need to make `/etc/nginx/sites-available/`
-- Need to create `pterodactyl.conf` within `/etc/nginx/sites-available` to allow it to be publicly available
-- Need to modify the config file above using https://docs.pterodactyl.io/docs/webserver-configuration
+- Need to create `pterodactyl.conf` within `/etc/nginx/sites-available` to allow it to be publicly available and modify the config file above using https://docs.pterodactyl.io/docs/webserver-configuration
 - Need to symlink new config file into sites-enabled `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
 - Need to restart nginx service `systemctl restart nginx`
 
