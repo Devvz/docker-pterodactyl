@@ -74,7 +74,7 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
     index index.html index.htm index.php;
     charset utf-8;`
 
-    `location / {
+    location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
 
@@ -104,7 +104,7 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
 
     location ~ /\.ht {
         deny all;
-    }`
+    }
     
 - Symlink new configuration file into `sites-enabled` folder `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
 - Restart nginx service `systemctl restart nginx`
