@@ -7,6 +7,10 @@ yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mys
 && ln -s /usr/bin/php70 /usr/bin/php \
 && ln -s /usr/bin/php70-phar /usr/bin/php-phar
 
+#AT THIS POINT, WE NEED TO COPY UP SOME FILES TO DO SOME STUFF...
+
+COPY ./locationatgithub/
+
 WORKDIR /var/www/html/pterodactyl
 
 RUN
