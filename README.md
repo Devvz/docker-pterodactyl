@@ -73,7 +73,6 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
     root "/var/www/pterodactyl/html/public";
     index index.html index.htm index.php;
     charset utf-8;
-
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
