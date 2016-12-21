@@ -42,7 +42,6 @@ The following command creates a container using the NGINX image. It exposes port
 - Need to create `pterodactyl.conf` within `/etc/nginx/sites-available` to allow the web interface to be publicly available and modify the config file above using https://docs.pterodactyl.io/docs/webserver-configuration. I added a config file to /manifest/etc/nginx/conf.d but I'm not quite sure how to reference this file without using a Dockerfile (or even with using one).
 - Need to symlink new config file into sites-enabled `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
 - Need to restart nginx service `systemctl restart nginx`  
-
+- Need to run `&& chown -R www-data:www-data * \` to grant ownership of the files.  
 4) How does the Dockerfile know where to pull the configuration files? For example, it uses an entrypoint.sh file but the exact location of this file is never specified.  
 5) Need to determine how to pull the PHP configuration (optional) for the Pterodactyl Dockerfile.  
-6) Need to run `&& chown -R www-data:www-data * \` to grant ownership of the files.
