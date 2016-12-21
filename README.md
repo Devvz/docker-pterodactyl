@@ -1,8 +1,8 @@
 # Pterodactyl Docker Containers
 This installation was designed to configure Pterodactyl using three separate Docker containers each individually running one of the major services required for the panel to function properly:
 
-1) The Pterodactyl panel (PHP)
-2) MySQL (mariadb)
+1) The Pterodactyl panel (PHP)  
+2) MySQL (mariadb)  
 3) Web server (NGINX)
 
 These containers were built with CentOS 7.1 using PHP7.
