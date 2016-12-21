@@ -11,7 +11,7 @@ COPY ./locationatgithub/
 #We need to specify the directory we want the following RUN commands to affect
 WORKDIR /var/www/html/pterodactyl/
 
-#We first specify the directory of the PHP settings which pull from the docker run command in the instructions
+#We first specify the directory of the PHP settings which pull from the docker run command in the instructions to configure the environment settings
 RUN chmod +x /var/www/html/pterodactyl/entrypoint.sh \
  && curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz \
  && tar --strip-components=1 -xzvf v0.5.5.tar.gz \
@@ -31,25 +31,6 @@ RUN chmod +x /var/www/html/pterodactyl/entrypoint.sh \
 #Configure Composer
 #DO WE NEED TO DO ANYTHING ELSE AFTER WE RUN composer setup?
 
-
-
-
-
-#ENVIRONMENT CONFIGURATION - THIS WILL BE GOING IN A SEPARATE FILE IN ANOTHER DIRECTORY THAT GETS COPIED UP
-#Environment setup
-php artisan pterodactyl:env
-
-#Email handling
-php artisan pterodactyl:mail
-
-#Automatic database setup
-php artisan migrate
-
-#Seed database with service information
-php artisan db:seed
-
-#Create an admin account
-php artisan pterodactyl:user
 
 
 
