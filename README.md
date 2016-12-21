@@ -45,5 +45,5 @@ The following command creates a container using the NGINX image. It exposes port
 - Need to restart nginx service `systemctl restart nginx`  
 
 5) Is there anything else I need to do for Pterodactyl panel? For example, after I run composer setup?  
-6) Are queue listeners necessary?
+6) Are queue listeners necessary?  
 7) How does the Dockerfile know where to pull the configuration files? For example, it uses an entrypoint.sh file but the exact location of this file is never specified.
