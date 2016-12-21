@@ -3,33 +3,29 @@ This container is built to run the Pterodactyl server management panel. It inclu
 
 These containers were built using CentOS 7.1 with PHP7.
 
-## Running the Container using `docker-compose`
+## Configuring the Containers
 
-Using the `docker-compose` feature will automatically deploy all of the necessary attributes contained within this file. If you would prefer to do this manually, please move onto the next section.
-
-Pull the container:
-
-`docker pull quay.io/linkgoeshere`  
-
-Run the containers:
-
-`docker-compose -d`  
-
-## Running the Container Manually
-
-**Database Container**
+**Database Container (pterodb)**
 
 The container requires a database. MariaDB is the recommended database.
 
-The following command creates a container using the MariaDB image. It also configures the necessary database (environment) settings, hence the numerous -e flags:
+The following command creates a container using the MariaDB image. It also configures the necessary environment settings for the database to function properly:
 
 `docker run -it --name pterodb -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=pterodb -e MYSQL_USER=pterodactyl -e MYSQL_PASSWORD=pterodactylpassword --name pterodb -d mariadb`
 
-**Pterodactyl Container**
+**Pterodactyl Container (pterophp)**
 
-The following command creates the Pterodactyl panel container and exposes port 80 and 443 externally and internally. It also links the Pterodactyl container to the database container which is required for communication. It also configures numerous settings for the container:
+The following command creates the Pterodactyl panel container. It exposes port 9000 externally and internally which is required to allow this container to communicate with the web server container.
 
-`docker run -it -p 80:80 -p 443:443 -v /srv/pterodactyl/.env:/var/www/html/.env --link pterodb -e db_host=pterodb -e db_port=3306 -e db_name=pterodb -e db_user=ptero -e db_pass=pterodactylpassword -e panel_url= -e timezone="America/New_York" -e email_driver=mail -e panel_email=foo@bar.org --name pteroweb quay.io/linkgoeshere:latest`
+`docker run -it --expose 9000:9000 --name pterophp quay.io/linkgoeshere:latest`
+
+**Website Container (pteroweb)**
+
+The container requires a web server. NGINX is the recommended web server.
+
+The following command creates a container using the NGINX image. It exposes port 80 and 443 externally and internally. It also links the containers to one another which is required for communication. It also configures the necessary environment settings for the web server to function properly:
+
+`docker run -it -p 80:80 -p 443:443 -v /srv/pterodactyl/.env:/var/www/html/.env --link pterophp --link pterodb -e db_host=pterodb -e db_port=3306 -e db_name=pterodb -e db_user=ptero -e db_pass=pterodactylpassword -e panel_url= -e timezone="America/New_York" -e email_driver=mail -e panel_email=foo@bar.org --name pteroweb quay.io/linkgoeshere:latest`
 
 ## Additional Settings
 
