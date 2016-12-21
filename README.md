@@ -65,9 +65,9 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
 - Allow Supervisor to read configuration `supervisorctl reread` `supervisorctl update`
 - Start worker `supervisorctl start pterodactyl-worker:*` `systemctl enable supervisor`
 - Enable public panel by adding a configuration file in `/etc/nginx/sites-available` called `pterodactyl.conf`
-- Edit file:
+- Edit file `pterodactyl.conf` with settings:
 
-`pterodactyl.conf` with settings `server {
+`server {
     listen 80;
     server_name <domain>;
     root "/var/www/pterodactyl/html/public";
