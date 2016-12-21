@@ -22,7 +22,7 @@ RUN chmod +x /var/www/html/pterodactyl/entrypoint.sh \
  && rm v0.5.5.tar.gz \
  && chmod -R 777 storage/* bootstrap/cache \
  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
- && composer setup 
+ && composer setup
 
 #Set correct permissions on files so panel can read php artisan settings *is this correct?*
 #Download panel files
@@ -35,35 +35,35 @@ RUN chmod +x /var/www/html/pterodactyl/entrypoint.sh \
 ENTRYPOINT ["/var/www/html/pterodactyl/entrypoint.sh"]
 
 
-#QUEUE LISTENERS
-#Configure Crontab so server tasks are queued
-crontab -e
-* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1
+##QUEUE LISTENERS
+##Configure Crontab so server tasks are queued
+#crontab -e
+#* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1
 
-#Start the service
-systemctl start cron
+##Start the service
+#systemctl start cron
 
-Install Supervisor to facilitate running and controlling of queues
-yum install supervisor
-systemctl start supervisor
+#Install Supervisor to facilitate running and controlling of queues
+#yum install supervisor
+#systemctl start supervisor
 
-#Create configuration file `pterodactyl-worker.conf` in the `/etc/supervisor/conf.d` directory
-#Configure the following contents: 
+##Create configuration file `pterodactyl-worker.conf` in the `/etc/supervisor/conf.d` directory
+##Configure the following contents: 
 
-[program:pterodactyl-worker]
-process_name=%(program_name)s_%(process_num)02d
-command=php /var/www/pterodactyl/html/artisan queue:work database --sleep=3 --tries=3
-autostart=true
-autorestart=true
-user=www-data
-numprocs=2
-redirect_stderr=true
-stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log
+#[program:pterodactyl-worker]
+#process_name=%(program_name)s_%(process_num)02d
+#command=php /var/www/pterodactyl/html/artisan queue:work database --sleep=3 --tries=3
+#autostart=true
+#autorestart=true
+#user=www-data
+#numprocs=2
+#redirect_stderr=true
+#stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log
 
-#Allow Supervisor to read configuration
-supervisorctl reread
-supervisorctl update
+##Allow Supervisor to read configuration
+#supervisorctl reread
+#supervisorctl update
 
-#Start worker
-supervisorctl start pterodactyl-worker:*
-systemctl enable supervisor
+##Start worker
+#supervisorctl start pterodactyl-worker:*
+#systemctl enable supervisor
