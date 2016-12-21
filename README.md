@@ -52,6 +52,7 @@ The following command creates a container using the NGINX image. It exposes port
 - Install Supervisor to facilitate running and controlling of queues `apt-get install supervisor` `systemctl start supervisor`
 - Create configuration file `pterodactyl-worker.conf` in the `/etc/supervisor/conf.d` directory
 - Configure the following contents:
+
 `[program:pterodactyl-worker]
 process_name=%(program_name)s_%(process_num)02d
 command=php /var/www/pterodactyl/html/artisan queue:work database --sleep=3 --tries=3
