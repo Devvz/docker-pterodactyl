@@ -5,7 +5,7 @@ This installation was designed to configure Pterodactyl using three separate Doc
 
 **Database Container (pterodb)**
 
-The container requires a database. MariaDB is the recommended database.
+Pterodactyl requires a database. MariaDB is the recommended database.
 
 The following command creates a container using the MariaDB image. It also configures the necessary environment settings for the database to function properly:
 
@@ -19,7 +19,7 @@ The following command creates the Pterodactyl panel container. It exposes port 9
 
 **Website Container (pteroweb)**
 
-The container requires a web server. NGINX is the recommended web server.
+Pterodactyl requires a web server. NGINX is the recommended web server.
 
 The following command creates a container using the NGINX image. It exposes port 80 and 443 externally and internally. It also links the containers to one another which is required for communication. It also configures the necessary environment settings for the web server to function properly:
 
