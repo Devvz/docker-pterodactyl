@@ -3,34 +3,34 @@ LABEL version="latest"
 RUN 
 
 #Install PHP
-yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache 
-ln -s /usr/bin/php70 /usr/bin/php
-ln -s /usr/bin/php70-phar /usr/bin/php-phar
+yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache \
+&& ln -s /usr/bin/php70 /usr/bin/php \
+&& ln -s /usr/bin/php70-phar /usr/bin/php-phar
 
 WORKDIR /var/www/html/pterodactyl
 
 RUN
 
 #Download panel files
-curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz
+curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz \
 
 #Unpack archive of files
-tar --strip-components=1 -xzvf v0.5.5.tar.gz
+&& tar --strip-components=1 -xzvf v0.5.5.tar.gz \
 
 #Remove panel files (after unpacking)
-rm v0.5.5.tar.gz
+&& rm v0.5.5.tar.gz \
 
 #Set correct permissions on files so panel can write logs and caches
-chmod -R 777 storage/* bootstrap/cache
+&& chmod -R 777 storage/* bootstrap/cache \
 
 #Set owner of the files
-chown -R www-data:www-data *
+&& chown -R www-data:www-data * \
 
 #Install Composer
-curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 
 #Configure Composer
-composer setup
+&& composer setup
 
 #NONE OF THE BELOW HAVE BEEN CONFIGURED YET - I DON'T KNOW WHERE TO PUT THEM
 
