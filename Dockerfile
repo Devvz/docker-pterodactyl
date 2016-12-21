@@ -4,8 +4,6 @@ MAINTAINER Michael Ferullo, <michael.j.ferullo@xyeLz.com>
 
 #We need to enable the IUS repository and install PHP
 RUN yum install -y epel-release \
- && wget https://rhel7.iuscommunity.org/ius-release.rpm \
- && rpm -Uvh ius-release*.rpm \
  && yum --enablerepo=ius install -y php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache \
  && ln -s /usr/bin/php70 /usr/bin/php \
  && ln -s /usr/bin/php70-phar /usr/bin/php-phar
