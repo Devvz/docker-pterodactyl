@@ -11,10 +11,7 @@ COPY ./locationatgithub/
 #We need to specify the directory we want the following RUN commands to affect
 WORKDIR /var/www/html/pterodactyl/
 
-#THE FIRST COMMAND HERE SHOULD BE ONE OF THE FILES FROM THE COPIED DIRECTORY
-#THIS FILE CONFIGURED THE PHP ARTISAN SETTINGS
 #We first specify the directory of the PHP settings which pull from the docker run command in the instructions
-
 RUN chmod +x /var/www/html/pterodactyl/entrypoint.sh \
  && curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz \
  && tar --strip-components=1 -xzvf v0.5.5.tar.gz \
