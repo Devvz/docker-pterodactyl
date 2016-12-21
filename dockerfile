@@ -32,7 +32,11 @@ curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.g
 #Configure Composer
 && composer setup
 
-#NONE OF THE BELOW HAVE BEEN CONFIGURED YET - I DON'T KNOW WHERE TO PUT THEM
+
+
+
+
+#NONE OF THE BELOWHAVE BEEN CONFIGURED YET - I DON'T KNOW WHERE TO PUT THEM
 
 #ENVIRONMENT CONFIGURATION
 #Environment setup
