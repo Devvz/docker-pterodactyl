@@ -43,6 +43,5 @@ The following command creates a container using the NGINX image. It exposes port
 - Need to symlink new config file into sites-enabled `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
 - Need to restart nginx service `systemctl restart nginx`  
 
-4) Is there anything else I need to do for Pterodactyl panel? For example, after I run composer setup (such as install the queue listeners, if necessary)?  
-5) How does the Dockerfile know where to pull the configuration files? For example, it uses an entrypoint.sh file but the exact location of this file is never specified.  
-6) Need to determine how to pull the PHP configuration (optional) for the Pterodactyl Dockerfile.  
+4) How does the Dockerfile know where to pull the configuration files? For example, it uses an entrypoint.sh file but the exact location of this file is never specified.  
+5) Need to determine how to pull the PHP configuration (optional) for the Pterodactyl Dockerfile.  
