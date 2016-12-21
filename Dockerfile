@@ -13,7 +13,10 @@ WORKDIR /var/www/html/pterodactyl/
 
 #THE FIRST COMMAND HERE SHOULD BE ONE OF THE FILES FROM THE COPIED DIRECTORY
 #THIS FILE CONFIGURED THE PHP ARTISAN SETTINGS
-RUN curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz \
+#We first specify the directory of the PHP settings which pull from the docker run command in the instructions
+
+RUN chmod +x /var/www/html/pterodactyl/entrypoint.sh \
+ && curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz \
  && tar --strip-components=1 -xzvf v0.5.5.tar.gz \
  && rm v0.5.5.tar.gz \
  && chmod -R 777 storage/* bootstrap/cache \
@@ -21,6 +24,7 @@ RUN curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.t
  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
  && composer setup
 
+#Set correct permissions on files so panel can read php artisan settings *is this correct?*
 #Download panel files
 #Unpack archive of files
 #Remove panel files (after unpacking)
