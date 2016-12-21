@@ -1,7 +1,7 @@
 ## Pterodactyl Panel Docker Container
 This container is built to run the Pterodactyl server management panel. It includes the panel itself as well as the necessary PHP dependencies. It does not include the other components required for the panel to function (NGINX and MariaDB). You will need to deploy these in a separate container(s).
 
-This container was build using CentOS 7.1 with PHP7.
+This container was built using CentOS 7.1 with PHP7.
 
 ## Running the Container using `docker-compose`
 
