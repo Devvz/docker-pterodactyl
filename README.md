@@ -28,3 +28,7 @@ The following command creates a container using the NGINX image. It exposes port
 ## Questions
 
 1) Does Container1 (pterodb) and Container2 (pterophp) need a link so they can communicate with one another? We configured a link from Container3 (pteroweb) to the other two containers, but nothing to allow those two to communicate with one another.
+
+## Outstanding Tasks
+
+1) Need to create the quay.io docker file (image).
