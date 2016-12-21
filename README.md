@@ -44,7 +44,9 @@ email_domain="email domain"
 email_port="email port"`
 
 Only the driver and email address are required for the "mail" driver.
+
 driver, email, and username(api key) are used for "mandrill" and "postmark".
+
 driver, email, username(api key), and domain are required for "mailgun". All settings are required for "smtp"
 
 **Administrator Setup**
