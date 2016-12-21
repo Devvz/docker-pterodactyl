@@ -8,7 +8,6 @@ RUN yum install -y epel-release http://rpms.famillecollet.com/enterprise/remi-re
  && ln -s /usr/bin/php70 /usr/bin/php \
  && ln -s /usr/bin/php70-phar /usr/bin/php-phar \
  && sed -i -e 's,;daemonize = yes,daemonize = no,g' /etc/php.ini
- #We need something right here that specifies where the php config will be coming from (optional)
 
 #We have configuration files in a directory that need to be copied up
 COPY ./manifest/ /
