@@ -42,6 +42,6 @@ The following command creates a container using the NGINX image. It exposes port
 - **Dockerfile RUN1** Need to make `/etc/nginx/sites-available/`
 - Need to create `pterodactyl.conf` within `/etc/nginx/sites-available` to allow it to be publicly available and modify the config file above using https://docs.pterodactyl.io/docs/webserver-configuration. I added a config file to /manifest/etc/nginx/conf.d but I'm not quite sure what this means.
 - Need to symlink new config file into sites-enabled `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
-- Need to restart nginx service `systemctl restart nginx`
+- Need to restart nginx service `systemctl restart nginx`  
 5) Is there anything else I need to do for Pterodactyl panel? For example, after I run composer setup?  
 6) Are queue listeners necessary?
