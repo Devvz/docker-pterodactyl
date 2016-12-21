@@ -25,6 +25,12 @@ The following command creates a container using the NGINX image. It exposes port
 
 `docker run -it -p 80:80 -p 443:443 -v /srv/pterodactyl/.env:/var/www/html/pterodactyl/.env --link pterophp --link pterodb -e db_host=pterodb -e db_port=3306 -e db_name=pterodb -e db_user=ptero -e db_pass=pterodactylpassword -e panel_url= -e timezone="America/New_York" -e email_driver=mail -e panel_email=foo@bar.org --name pteroweb nginx`
 
+- Need to add `/etc/nginx/sites-available/`
+- Need to create `pterodactyl.conf` within `/etc/nginx/sites-available` to allow it to be publicly available
+- Need to modify the config file above using https://docs.pterodactyl.io/docs/webserver-configuration
+- Need to symlink your new config file into sites-enabled `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
+- Need to restart nginx service `systemctl restart nginx`
+
 ## Questions
 
 1) Does Container1 (pterodb) and Container2 (pterophp) need a link so they can communicate with one another? We configured a link from Container3 (pteroweb) to the other two containers, but nothing to allow those two to communicate with one another.  
@@ -65,46 +71,3 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
 - Allow Supervisor to read configuration `supervisorctl reread` `supervisorctl update`
 - Start worker `supervisorctl start pterodactyl-worker:*` `systemctl enable supervisor`
 - Enable public panel by adding a configuration file in `/etc/nginx/sites-available` called `pterodactyl.conf`
-- Edit file `pterodactyl.conf` with settings:
-
-`server {
-    listen 80;
-    server_name <domain>;
-    root "/var/www/pterodactyl/html/public";
-    index index.html index.htm index.php;
-    charset utf-8;`
-
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
-
-    location = /favicon.ico { access_log off; log_not_found off; }
-    location = /robots.txt  { access_log off; log_not_found off; }
-
-    access_log off;
-    error_log  /var/log/nginx/pterodactyl.app-error.log error;
-
-    sendfile off;
-
-    client_max_body_size 100m;
-
-    location ~ \.php$ {
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
-        fastcgi_index index.php;
-        include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_intercept_errors off;
-        fastcgi_buffer_size 16k;
-        fastcgi_buffers 4 16k;
-        fastcgi_connect_timeout 300;
-        fastcgi_send_timeout 300;
-        fastcgi_read_timeout 300;
-    }
-
-    location ~ /\.ht {
-        deny all;
-    }
-    
-- Symlink new configuration file into `sites-enabled` folder `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
-- Restart nginx service `systemctl restart nginx`
