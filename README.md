@@ -43,7 +43,7 @@ The following command creates a container using the NGINX image. It exposes port
 ## Questions
 
 1) Does Container1 (pterodb) and Container2 (pterophp) need a link so they can communicate with one another? We configured a link from Container3 (pteroweb) to the other two containers, but nothing to allow those two to communicate with one another.  
-2) We're supposed to be changing directory to /var/www/pterodactyl/html as this is where the panel itself is to be installed. Do I need to reference this directory somewhere (either in the Dockerfile or the image)?  
-3) The `yum install openssl-devel` command from the installation instructions - where does this need to be executed?  
-4) The database configuration (https://docs.pterodactyl.io/docs/installing-1), is this local to the Pterodactyl container or is this utilizing mariadb?  
-5) After the compser installation, how/where do I configure the setup settings? Is this in the Dockerfile?
+2) The `yum install openssl-devel` command from the installation instructions - where does this need to be executed?  
+3) The database configuration (https://docs.pterodactyl.io/docs/installing-1), is this local to the Pterodactyl container or is this utilizing mariadb?  
+4) After the compser installation, how/where do I configure the setup settings? Is this in the Dockerfile?  
+5) There are some additional settings for the NGINX installation that I need to clear up (they are shown above under the web server container configuration). I'm not sure how to apply them.
