@@ -1,7 +1,5 @@
 FROM centos7
 
-LABEL version="latest"
-
 MAINTAINER Michael Ferullo, <michael.j.ferullo@xyeLz.com>
 
 #We need to install PHP
