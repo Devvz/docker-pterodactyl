@@ -28,6 +28,7 @@ The following command creates a container using the NGINX image. It exposes port
 ## Questions
 
 1) Does Container1 (pterodb) and Container2 (pterophp) need a link so they can communicate with one another? We configured a link from Container3 (pteroweb) to the other two containers, but nothing to allow those two to communicate with one another.
+2) The `yum install openssl-devel` command from the installation instructions - where does this need to be executed?
 
 ## Outstanding Tasks
 
