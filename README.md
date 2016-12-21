@@ -25,22 +25,22 @@ The full list of supported environment flags are:
 
 **Database Settings**
 
-`db_host="hostname"  
+db_host="hostname"  
 db_port="port"  
 db_name="database name"  
 db_user="username"  
 db_pass="database password"  
 panel_url="panel url"  
-timezone="panel timezone in php time"`  
+timezone="panel timezone in php time"
 
 **Email Settings**
 
-`email_driver="email driver"  
+email_driver="email driver"  
 panel_email="email address for the panel"  
 email_user="email username"  
 email_pass="email password"  
 email_domain="email domain"  
-email_port="email port"`  
+email_port="email port" 
 
 Only the driver and email address are required for the "mail" driver.  
 driver, email, and username(api key) are used for "mandrill" and "postmark".  
@@ -48,6 +48,6 @@ driver, email, username(api key), and domain are required for "mailgun". All set
 
 **Administrator Setup**
 
-`admin_email="admin email"  
+admin_email="admin email"  
 admin_pass="admin password"  
-admin_stat=1 (should stay 1 to set user as admin)`  
+admin_stat=1 (should stay 1 to set user as admin)
