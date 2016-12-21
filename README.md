@@ -23,37 +23,7 @@ The following command creates the Pterodactyl panel container. It exposes port 9
 
 `docker run -it -p 9000:9000 --name pterophp quay.io/linkgoeshere:latest`
 
-- **Dockerfile RUN1** PHP install `yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache`  
-- **Dockerfile RUN1** `ln -s /usr/bin/php70 /usr/bin/php`  
-- **Dockerfile RUN1** `ln -s /usr/bin/php70-phar /usr/bin/php-phar`
-- **Dockerfile RUN2** Download panel files `curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz`
-- **Dockerfile RUN2** Unpack archive of files `tar --strip-components=1 -xzvf v0.5.5.tar.gz`
-- **Dockerfile RUN2** Remove panel files `rm v0.5.5.tar.gz`
-- **Dockerfile RUN2** Set correct permissions on files so panel can write logs and caches `chmod -R 777 storage/* bootstrap/cache`
-- **Dockerfile RUN2** Set owner of the files `chown -R www-data:www-data *`
-- **Dockerfile RUN2** Install Composer `curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer`
-- **Dockerfile RUN2** Configure Composer `composer setup`
-- Environment setup `php artisan pterodactyl:env`
-- Configure email handling `php artisan pterodactyl:mail`
-- Automatic database setup `php artisan migrate`
-- Seed database with service information `php artisan db:seed`
-- Create an admin account `php artisan pterodactyl:user`
-- Configure Crontab so server tasks are queued `crontab -e` `* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1`
-- Start the service `systemctl start cron`
-- Install Supervisor to facilitate running and controlling of queues `apt-get install supervisor` `systemctl start supervisor`
-- Create configuration file `pterodactyl-worker.conf` in the `/etc/supervisor/conf.d` directory
-- Configure the following contents: 
-`[program:pterodactyl-worker]
-process_name=%(program_name)s_%(process_num)02d
-command=php /var/www/pterodactyl/html/artisan queue:work database --sleep=3 --tries=3
-autostart=true
-autorestart=true
-user=www-data
-numprocs=2
-redirect_stderr=true
-stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
-- Allow Supervisor to read configuration `supervisorctl reread` `supervisorctl update`
-- Start worker `supervisorctl start pterodactyl-worker:*` `systemctl enable supervisor`
+See "dockerfile" for Dockerfile information.
 
 **Website Container (pteroweb)**
 
