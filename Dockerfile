@@ -7,7 +7,7 @@ RUN yum install -y epel-release http://rpms.famillecollet.com/enterprise/remi-re
  && yum --enablerepo=remi install -y php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache \
  && ln -s /usr/bin/php70 /usr/bin/php \
  && ln -s /usr/bin/php70-phar /usr/bin/php-phar \
- && sed -i -e 's,;daemonize = yes,daemonize = no,g' /etc/php70/php-fpm.conf
+ && sed -i -e 's,;daemonize = yes,daemonize = no,g' /etc/php.ini
  #We need something right here that specifies where the php config will be coming from (optional)
 
 #We have configuration files in a directory that need to be copied up
