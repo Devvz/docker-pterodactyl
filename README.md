@@ -37,14 +37,12 @@ The following command creates a container using the NGINX image. It exposes port
 
 1) Does Container1 (pterodb) and Container2 (pterophp) need a link so they can communicate with one another? We configured a link from Container3 (pteroweb) to the other two containers, but nothing to allow those two to communicate with one another.  
 2) The `yum install openssl-devel` command from the installation instructions - where does this need to be executed?  
-3) The database configuration where it specifies that I will create **an empty database** (https://docs.pterodactyl.io/docs/installing-1), is this local to the Pterodactyl container or is this utilizing mariadb?  
-4) There are some additional settings for the NGINX installation that I need to clear up that I'm not sure how to apply. Some of them were applied with the old Dockerfile which combined the panel installation with the NGINX installation and some I wasn't able to find at all. My plan here was to *avoid* using a Dockerfile for these settings if possible.  
+3) There are additional settings for the NGINX installation that need to be configued *without* using a Dockerfile. I'm not sure how to go about this. I would like to *avoid* using a Dockerfile for these settings if possible.  
 - Need to create the `/etc/nginx/sites-available/` directory (originally part of the first Dockerfile run command)  
 - Need to create `pterodactyl.conf` within `/etc/nginx/sites-available` to allow the web interface to be publicly available and modify the config file above using https://docs.pterodactyl.io/docs/webserver-configuration. I added a config file to /manifest/etc/nginx/conf.d but I'm not quite sure how to reference this file without using a Dockerfile (or even with using one).
 - Need to symlink new config file into sites-enabled `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
 - Need to restart nginx service `systemctl restart nginx`  
 
-5) Is there anything else I need to do for Pterodactyl panel? For example, after I run composer setup?  
-6) Are queue listeners necessary?  
-7) How does the Dockerfile know where to pull the configuration files? For example, it uses an entrypoint.sh file but the exact location of this file is never specified.
-8) Need to determine how to pull the PHP configuration for the Pteropanel Dockerfile.
+4) Is there anything else I need to do for Pterodactyl panel? For example, after I run composer setup (such as install the queue listeners, if necessary)?  
+5) How does the Dockerfile know where to pull the configuration files? For example, it uses an entrypoint.sh file but the exact location of this file is never specified.  
+6) Need to determine how to pull the PHP configuration (optional) for the Pterodactyl Dockerfile.  
