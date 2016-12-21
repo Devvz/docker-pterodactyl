@@ -40,3 +40,67 @@ The following command creates a container using the NGINX image. It exposes port
 - Unpack archive of files `tar --strip-components=1 -xzvf v0.5.5.tar.gz`
 - Set correct permissions on files so panel can write logs and caches `chmod -R 777 storage/* bootstrap/cache`
 - Set owner of the files `chown -R www-data:www-data *`
+- Install Composer `curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer`
+- Configure Composer `composer setup`
+- Environment setup `php artisan pterodactyl:env`
+- Configure email handling `php artisan pterodactyl:mail`
+- Automatic database setup `php artisan migrate`
+- Seed database with service information `php artisan db:seed`
+- Create an admin account `php artisan pterodactyl:user`
+- Configure Crontab so server tasks are queued `crontab -e` `* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1`
+- Start the service `systemctl start cron`
+- Install Supervisor to facilitate running and controlling of queues `apt-get install supervisor` `systemctl start supervisor`
+- Create configuration file `pterodactyl-worker.conf` in the `/etc/supervisor/conf.d` directory
+- Configure the following contents `[program:pterodactyl-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /var/www/pterodactyl/html/artisan queue:work database --sleep=3 --tries=3
+autostart=true
+autorestart=true
+user=www-data
+numprocs=2
+redirect_stderr=true
+stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
+- Allow Supervisor to read configuration `supervisorctl reread` `supervisorctl update`
+- Start worker `supervisorctl start pterodactyl-worker:*` `systemctl enable supervisor`
+- Enable public panel by adding a configuration file in `/etc/nginx/sites-available` called `pterodactyl.conf`
+- Edit `pterodactyl.conf` with settings `server {
+    listen 80;
+    server_name <domain>;
+    root "/var/www/pterodactyl/html/public";
+    index index.html index.htm index.php;
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    access_log off;
+    error_log  /var/log/nginx/pterodactyl.app-error.log error;
+
+    sendfile off;
+
+    client_max_body_size 100m;
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_intercept_errors off;
+        fastcgi_buffer_size 16k;
+        fastcgi_buffers 4 16k;
+        fastcgi_connect_timeout 300;
+        fastcgi_send_timeout 300;
+        fastcgi_read_timeout 300;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}`
+- Symlink new configuration file into `sites-enabled` folder `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
+- Restart nginx service `systemctl restart nginx`
