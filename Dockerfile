@@ -18,7 +18,7 @@ RUN chmod +x /var/www/html/pterodactyl/entrypoint.sh \
  && tar --strip-components=1 -xzvf v0.5.5.tar.gz \
  && rm v0.5.5.tar.gz \
  && chmod -R 777 storage/* bootstrap/cache \
- && chown -R www-data:www-data * \
+ && chown -R nginx:nginx * \
  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
  && composer setup
 
