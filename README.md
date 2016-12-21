@@ -25,7 +25,7 @@ The following command creates a container using the NGINX image. It exposes port
 
 `docker run -it -p 80:80 -p 443:443 -v /srv/pterodactyl/.env:/var/www/html/pterodactyl/.env --link pterophp --link pterodb -e db_host=pterodb -e db_port=3306 -e db_name=pterodb -e db_user=ptero -e db_pass=pterodactylpassword -e panel_url= -e timezone="America/New_York" -e email_driver=mail -e panel_email=foo@bar.org --name pteroweb nginx`
 
-- Need to add `/etc/nginx/sites-available/`
+- **Dockerfile RUN** Need to make `/etc/nginx/sites-available/`
 - Need to create `pterodactyl.conf` within `/etc/nginx/sites-available` to allow it to be publicly available
 - Need to modify the config file above using https://docs.pterodactyl.io/docs/webserver-configuration
 - Need to symlink your new config file into sites-enabled `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
@@ -41,9 +41,9 @@ The following command creates a container using the NGINX image. It exposes port
 
 1) Need to create a Dockerfile for the Pterodactyl panel prior to creating the image.  
 2) Need to import the Pterodactyl Dockerfile to quay.io in order to pull/configure image.
-- PHP install `yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache`  
-**Dockerfile** `ln -s /usr/bin/php70 /usr/bin/php`  
-**Dockerfile** `ln -s /usr/bin/php70-phar /usr/bin/php-phar`
+- **Dockerfile RUN** PHP install `yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache`  
+- **Dockerfile RUN** `ln -s /usr/bin/php70 /usr/bin/php`  
+- **Dockerfile RUN** `ln -s /usr/bin/php70-phar /usr/bin/php-phar`
 - Download panel files `curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz`
 - Unpack archive of files `tar --strip-components=1 -xzvf v0.5.5.tar.gz`
 - Set correct permissions on files so panel can write logs and caches `chmod -R 777 storage/* bootstrap/cache`
