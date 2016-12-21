@@ -1,4 +1,8 @@
+FROM CentOS:7.1
+
 LABEL version="latest"
+
+MAINTAINER Michael Ferullo, <michael.j.ferullo@xyeLz.com>
 
 #We need to install PHP
 RUN yum install -y php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache \
