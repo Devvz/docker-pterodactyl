@@ -29,7 +29,6 @@ RUN chmod +x /var/www/html/pterodactyl/entrypoint.sh \
 #Unpack archive of files
 #Remove panel files (after unpacking)
 #Set correct permissions on files so panel can write logs and caches
-#Set owner of the files
 #Install Composer
 #Configure Composer
 
