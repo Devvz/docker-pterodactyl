@@ -1,22 +1,18 @@
 LABEL version="latest"
 
 #We need to install PHP
-
 RUN yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache \
  && ln -s /usr/bin/php70 /usr/bin/php \
  && ln -s /usr/bin/php70-phar /usr/bin/php-phar
 
 #We have configuration files in a directory that need to be copied up
-
 COPY ./locationatgithub/
 
 #We need to specify the directory we want the following RUN commands to be run in
-
 WORKDIR /var/www/html/pterodactyl/
 
 #THE FIRST COMMAND HERE SHOULD BE ONE OF THE FILES FROM THE COPIED DIRECTORY
 #THIS FILE CONFIGURED THE PHP ARTISAN SETTINGS
-
 RUN curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz \ #Download panel files
  && tar --strip-components=1 -xzvf v0.5.5.tar.gz \ #Unpack archive of files
  && rm v0.5.5.tar.gz \ #Remove panel files (after unpacking)
