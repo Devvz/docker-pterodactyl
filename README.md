@@ -1,4 +1,4 @@
-## Pterodactyl Docker Containers
+# Pterodactyl Docker Containers
 This installation was designed to configure Pterodactyl using three separate Docker containers each individually running one of the major services required for the panel to function properly. These containers were built with CentOS 7.1 using PHP7.
 
 ## Configuring the Containers
