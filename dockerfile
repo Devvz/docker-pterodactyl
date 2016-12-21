@@ -15,6 +15,9 @@ WORKDIR /var/www/html/pterodactyl
 
 RUN
 
+#THE FIRST COMMAND HERE SHOULD BE ONE OF THE FILES FROM THE COPIED DIRECTORY
+#THIS FILE CONFIGURED THE PHP ARTISAN SETTINGS
+
 #Download panel files
 curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz \
 
