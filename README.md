@@ -34,3 +34,5 @@ The following command creates a container using the NGINX image. It exposes port
 ## Outstanding Tasks
 
 1) Need to create the quay.io docker file (image).
+- PHP install
+- Download panel files
