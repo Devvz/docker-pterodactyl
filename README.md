@@ -17,11 +17,15 @@ Run the containers:
 
 ## Running the Container Manually
 
+**Database Container**
+
 The container requires a database. MariaDB is the recommended database.
 
-The following command creates another container using the MariaDB image. It also configures the necessary database (environment) settings, hence the numerous -e flags:
+The following command creates a container using the MariaDB image. It also configures the necessary database (environment) settings, hence the numerous -e flags:
 
 `docker run -it --name pterodb -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=pterodb -e MYSQL_USER=pterodactyl -e MYSQL_PASSWORD=pterodactylpassword --name pterodb -d mariadb`
+
+**Pterodactyl Container**
 
 The following command creates the Pterodactyl panel container and exposes port 80 and 443 externally and internally. It also links the Pterodactyl container to the database container which is required for communication. It also configures numerous settings for the container:
 
