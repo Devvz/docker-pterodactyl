@@ -41,8 +41,8 @@ The following command creates a container using the NGINX image. It exposes port
 
 1) Need to create a Dockerfile for the Pterodactyl panel prior to creating the image.  
 2) Need to import the Pterodactyl Dockerfile to quay.io in order to pull/configure image.
-- PHP install `yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache`
-**Dockerfile** `ln -s /usr/bin/php70 /usr/bin/php`
+- PHP install `yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache`  
+**Dockerfile** `ln -s /usr/bin/php70 /usr/bin/php`  
 **Dockerfile** `ln -s /usr/bin/php70-phar /usr/bin/php-phar`
 - Download panel files `curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz`
 - Unpack archive of files `tar --strip-components=1 -xzvf v0.5.5.tar.gz`
