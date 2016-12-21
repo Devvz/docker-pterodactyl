@@ -24,36 +24,3 @@ The container requires a web server. NGINX is the recommended web server.
 The following command creates a container using the NGINX image. It exposes port 80 and 443 externally and internally. It also links the containers to one another which is required for communication. It also configures the necessary environment settings for the web server to function properly:
 
 `docker run -it -p 80:80 -p 443:443 -v /srv/pterodactyl/.env:/var/www/html/.env --link pterophp --link pterodb -e db_host=pterodb -e db_port=3306 -e db_name=pterodb -e db_user=ptero -e db_pass=pterodactylpassword -e panel_url= -e timezone="America/New_York" -e email_driver=mail -e panel_email=foo@bar.org --name pteroweb quay.io/linkgoeshere:latest`
-
-## Additional Settings
-
-The full list of supported environment flags are:
-
-**Database Settings**
-
-db_host="hostname"  
-db_port="port"  
-db_name="database name"  
-db_user="username"  
-db_pass="database password"  
-panel_url="panel url"  
-timezone="panel timezone in php time"
-
-**Email Settings**
-
-email_driver="email driver"  
-panel_email="email address for the panel"  
-email_user="email username"  
-email_pass="email password"  
-email_domain="email domain"  
-email_port="email port" 
-
-Only the driver and email address are required for the "mail" driver.  
-driver, email, and username(api key) are used for "mandrill" and "postmark".  
-driver, email, username(api key), and domain are required for "mailgun". All settings are required for "smtp"  
-
-**Administrator Setup**
-
-admin_email="admin email"  
-admin_pass="admin password"  
-admin_stat=1 (should stay 1 to set user as admin)
