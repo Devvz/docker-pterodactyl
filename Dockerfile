@@ -22,7 +22,7 @@ RUN chmod +x /var/www/html/pterodactyl/entrypoint.sh \
  && rm v0.5.5.tar.gz \
  && chmod -R 777 storage/* bootstrap/cache \
  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
- && composer setup
+ && composer setup 
 
 #Set correct permissions on files so panel can read php artisan settings *is this correct?*
 #Download panel files
