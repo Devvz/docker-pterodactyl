@@ -37,7 +37,7 @@ The following command creates a container using the NGINX image. It exposes port
 2) We're supposed to be changing directory to /var/www/pterodactyl/html as this is where the panel itself is to be installed. Do I need to reference this directory somewhere (either in the Dockerfile or the image)?
 2) The `yum install openssl-devel` command from the installation instructions - where does this need to be executed?
 
-## Outstanding Tasks
+## Outstanding Tasks (unknown location)
 
 1) Need to create the Dockerfile prior to creating the image.  
 2) Need to import Dockerfile to quay.io in order to configure image.
@@ -70,4 +70,3 @@ redirect_stderr=true
 stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
 - Allow Supervisor to read configuration `supervisorctl reread` `supervisorctl update`
 - Start worker `supervisorctl start pterodactyl-worker:*` `systemctl enable supervisor`
-- Enable public panel by adding a configuration file in `/etc/nginx/sites-available` called `pterodactyl.conf`
