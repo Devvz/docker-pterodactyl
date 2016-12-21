@@ -33,6 +33,8 @@ The following command creates a container using the NGINX image. It exposes port
 
 ## Outstanding Tasks
 
-1) Need to create the quay.io docker file (image).
-- PHP install
+1) Need to create the quay.io docker file.
+2) Need to import docker file to quay.io in order to configure image.
+- PHP install `yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache` `ln -s /usr/bin/php70 /usr/bin/php` `ln -s /usr/bin/php70-phar /usr/bin/php-phar`
 - Download panel files
+- 
