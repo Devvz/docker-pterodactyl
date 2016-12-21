@@ -13,13 +13,21 @@ WORKDIR /var/www/html/pterodactyl/
 
 #THE FIRST COMMAND HERE SHOULD BE ONE OF THE FILES FROM THE COPIED DIRECTORY
 #THIS FILE CONFIGURED THE PHP ARTISAN SETTINGS
-RUN curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz \ #Download panel files
- && tar --strip-components=1 -xzvf v0.5.5.tar.gz \ #Unpack archive of files
- && rm v0.5.5.tar.gz \ #Remove panel files (after unpacking)
- && chmod -R 777 storage/* bootstrap/cache \ #Set correct permissions on files so panel can write logs and caches
- && chown -R www-data:www-data * \ #Set owner of the files
- && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \ #Install Composer
- && composer setup #Configure Composer
+RUN curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz \
+ && tar --strip-components=1 -xzvf v0.5.5.tar.gz \
+ && rm v0.5.5.tar.gz \
+ && chmod -R 777 storage/* bootstrap/cache \
+ && chown -R www-data:www-data * \
+ && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+ && composer setup
+
+#Download panel files
+#Unpack archive of files
+#Remove panel files (after unpacking)
+#Set correct permissions on files so panel can write logs and caches
+#Set owner of the files
+#Install Composer
+#Configure Composer
 
 
 
