@@ -28,13 +28,13 @@ The following command creates a container using the NGINX image. It exposes port
 ## Questions
 
 1) Does Container1 (pterodb) and Container2 (pterophp) need a link so they can communicate with one another? We configured a link from Container3 (pteroweb) to the other two containers, but nothing to allow those two to communicate with one another.  
-2) We're supposed to be changing directory to /var/www/pterodactyl/html as this is where the panel itself is to be installed. Is this still relevant somewhere here?  
+2) We're supposed to be changing directory to /var/www/pterodactyl/html as this is where the panel itself is to be installed. Do I need to reference this directory somewhere (either in the Dockerfile or the image)?
 2) The `yum install openssl-devel` command from the installation instructions - where does this need to be executed?
 
 ## Outstanding Tasks
 
-1) Need to create the quay.io docker file.  
-2) Need to import docker file to quay.io in order to configure image.
+1) Need to create the Dockerfile prior to creating the image.  
+2) Need to import Dockerfile to quay.io in order to configure image.
 - PHP install `yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache` `ln -s /usr/bin/php70 /usr/bin/php` `ln -s /usr/bin/php70-phar /usr/bin/php-phar`
 - Download panel files `curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz`
 - Unpack archive of files `tar --strip-components=1 -xzvf v0.5.5.tar.gz`
