@@ -61,7 +61,7 @@ The following command creates a container using the NGINX image. It exposes port
 - **Dockerfile RUN1** Need to make `/etc/nginx/sites-available/`
 - Need to create `pterodactyl.conf` within `/etc/nginx/sites-available` to allow it to be publicly available
 - Need to modify the config file above using https://docs.pterodactyl.io/docs/webserver-configuration
-- Need to symlink your new config file into sites-enabled `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
+- Need to symlink new config file into sites-enabled `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
 - Need to restart nginx service `systemctl restart nginx`
 
 ## Questions
