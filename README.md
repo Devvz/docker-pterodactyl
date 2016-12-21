@@ -51,7 +51,8 @@ The following command creates a container using the NGINX image. It exposes port
 - Start the service `systemctl start cron`
 - Install Supervisor to facilitate running and controlling of queues `apt-get install supervisor` `systemctl start supervisor`
 - Create configuration file `pterodactyl-worker.conf` in the `/etc/supervisor/conf.d` directory
-- Configure the following contents `[program:pterodactyl-worker]
+- Configure the following contents:
+`[program:pterodactyl-worker]
 process_name=%(program_name)s_%(process_num)02d
 command=php /var/www/pterodactyl/html/artisan queue:work database --sleep=3 --tries=3
 autostart=true
@@ -63,7 +64,9 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
 - Allow Supervisor to read configuration `supervisorctl reread` `supervisorctl update`
 - Start worker `supervisorctl start pterodactyl-worker:*` `systemctl enable supervisor`
 - Enable public panel by adding a configuration file in `/etc/nginx/sites-available` called `pterodactyl.conf`
-- Edit `pterodactyl.conf` with settings `server {
+- Edit file:
+
+`pterodactyl.conf` with settings `server {
     listen 80;
     server_name <domain>;
     root "/var/www/pterodactyl/html/public";
