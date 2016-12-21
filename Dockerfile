@@ -8,7 +8,7 @@ RUN yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php
 #We have configuration files in a directory that need to be copied up
 COPY ./locationatgithub/
 
-#We need to specify the directory we want the following RUN commands to be run in
+#We need to specify the directory we want the following RUN commands to affect
 WORKDIR /var/www/html/pterodactyl/
 
 #THE FIRST COMMAND HERE SHOULD BE ONE OF THE FILES FROM THE COPIED DIRECTORY
