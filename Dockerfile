@@ -1,19 +1,16 @@
 LABEL version="latest"
 
-RUN 
+RUN yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache \
+ && ln -s /usr/bin/php70 /usr/bin/php \
+ && ln -s /usr/bin/php70-phar /usr/bin/php-phar
 
-#Install PHP
-yum install php70-php php70-php-common php70-php-fpm php70-php-cli php70-php-mysql php70-php-mcrypt php70-php-gd php70-php-mbstring php70-php-pdo php70-php-zip php70-php-bcmath php70-php-dom php70-php-opcache \
-&& ln -s /usr/bin/php70 /usr/bin/php \
-&& ln -s /usr/bin/php70-phar /usr/bin/php-phar
-
-#AT THIS POINT, WE NEED TO COPY UP SOME FILES TO DO SOME STUFF...
+#AT THIS POINT, WE NEED TO COPY UP A DIRECTORY WITH FILES TO DO SOME STUFF...
 
 COPY ./locationatgithub/
 
-WORKDIR /var/www/html/pterodactyl
+WORKDIR /var/www/html/pterodactyl/
 
-RUN
+RUN 
 
 #THE FIRST COMMAND HERE SHOULD BE ONE OF THE FILES FROM THE COPIED DIRECTORY
 #THIS FILE CONFIGURED THE PHP ARTISAN SETTINGS
