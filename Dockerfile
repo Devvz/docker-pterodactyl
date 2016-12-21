@@ -30,7 +30,6 @@ RUN chmod +x /var/www/html/pterodactyl/entrypoint.sh \
 #Set owner of the files
 #Install Composer
 #Configure Composer
-#DO WE NEED TO DO ANYTHING ELSE AFTER WE RUN composer setup?
 
 ENTRYPOINT ["/var/www/html/pterodactyl/entrypoint.sh"]
 
