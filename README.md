@@ -21,7 +21,7 @@ The following command creates a container using the MariaDB image. It also confi
 
 The following command creates the Pterodactyl panel container. It exposes port 9000 externally and internally which is required to allow this container to communicate with the web server container.
 
-`docker run -it -p 9000:9000 --name pterophp quay.io/linkgoeshere:latest`
+`docker run -it -p 9000:9000 --name pterophp quay.io/xyeLz/link:version`
 
 See "dockerfile" for Dockerfile information.
 
