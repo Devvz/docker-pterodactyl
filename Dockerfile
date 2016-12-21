@@ -1,4 +1,4 @@
-FROM CentOS:7.1
+FROM centos7
 
 LABEL version="latest"
 
