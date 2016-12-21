@@ -6,7 +6,9 @@ This container was built using CentOS 7.1 with PHP7.
 ## Running the Container using `docker-compose`
 
 I'm supposed to make the container accessible from the Interweb (Quay.io) `docker pull quay.io/linkgoeshere`
+
 The container *should* be run using `docker-compose -d`
+
 The container *can* be run manually.
 
 ## Running the Container Manually
