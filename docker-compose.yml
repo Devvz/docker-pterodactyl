@@ -36,11 +36,6 @@ services:
             - "admin_email="
             - "admin_pass="
             - "admin_stat=1"
-            - "php artisan pterodactyl:env"
-            - "php artisan pterodactyl:mail"
-            - "php artisan migrate"
-            - "php artisan db:seed"
-            - "php artisan pterodactyl:user"
         networks: 
             - web-network-01
     db:
