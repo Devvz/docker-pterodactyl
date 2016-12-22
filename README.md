@@ -27,29 +27,30 @@ These containers were built with CentOS 7.1 using PHP7.
 **Missing Steps**
 
 - ~~Run the following commands during the PHP installation (Dockerfile):~~  
-~~`ln -s /usr/bin/php70 /usr/bin/php`~~  
-~~`ln -s /usr/bin/php70-phar /usr/bin/php-phar`~~  
-~~*Log: These symlinks are required to allow the `php` command to function, as it references `/usr/bin/php`. I have added them to the Dockerfile.*~~  
+~~`ln -s /usr/bin/php70 /usr/bin/php`  
+`ln -s /usr/bin/php70-phar /usr/bin/php-phar`  
+*Log: These symlinks are required to allow the `php` command to function, as it references `/usr/bin/php`. I have added them to the Dockerfile.*~~  
 - Run the following commands during the Pterodactyl installation (Docker Compose):  
 `chmod -R 777 storage/* bootstrap/cache`  
 `chown -R www-data:www-data *`  
-- ~~Perform the `composer setup` command (Dockerfile)~~  
-~~*Log: We are already doing this using the `composer install --ansi --no-dev` command. This is the same command executed in a different way.*~~
-- Environment configuration:  
+- ~~Perform the `composer setup` command (Dockerfile)  
+*Log: We are already doing this using the `composer install --ansi --no-dev` command. This is the same command executed in a different way.*~~
+- ~~Environment configuration:  
 `php artisan pterodactyl:env`  
 `php artisan pterodactyl:mail`  
 `php artisan migrate`  
 `php artisan db:seed`  
 `php artisan pterodactyl:user`  
+*Log: Added these to the environment section of the docker-compose.yml for PHP.*~~
 - Queue listeners (Crontab):  
 `crontab -e`  
 `* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1`  
 - Queue listeners (Supervisor):  
 `apt-get install supervisor`  
 `service supervisor start`  
-- ~~Queue listeners (Configuration File):~~  
-~~`pterodactyl-worker.conf` in `/etc/supervisor/conf.d` directory~~  
-~~`[program:pterodactyl-worker]
+- ~~Queue listeners (Configuration File):  
+`pterodactyl-worker.conf` in `/etc/supervisor/conf.d` directory  
+`[program:pterodactyl-worker]
 process_name=%(program_name)s_%(process_num)02d
 command=php /var/www/pterodactyl/html/artisan queue:work database --sleep=3 --tries=3
 autostart=true
