@@ -46,6 +46,7 @@ These containers were built with CentOS 7.1 using PHP7.
 `service supervisor start`  
 - Queue listeners (Configuration File):  
 `pterodactyl-worker.conf` in `/etc/supervisor/conf.d` directory  
+
 `[program:pterodactyl-worker]
 process_name=%(program_name)s_%(process_num)02d
 command=php /var/www/pterodactyl/html/artisan queue:work database --sleep=3 --tries=3
