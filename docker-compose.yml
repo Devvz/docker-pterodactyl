@@ -11,6 +11,19 @@ services:
             - ./files/etc/nginx/sites-available/pterodactyl.conf/:/etc/nginx/sites-available/pterodactyl.conf/
         networks: 
             - web-network-01
+    db:
+        hostname: ark-sql1
+        image: mariadb:latest
+        command: mysqld
+        volumes:
+            - ./dbdata:/var/lib/mysql
+        environment:
+            - MYSQL_DATABASE=pterodb
+            - MYSQL_ROOT_PASSWORD=pterosqlpassword
+            - MYSQL_PASSWORD=pterodbpassword
+            - MYSQL_USER=ptero
+        networks: 
+            - web-network-01    
     php:
         hostname: ark-php1
         image: quay.io/repository/xyelz/pterodactyl-php
@@ -34,19 +47,11 @@ services:
             - "admin_email="
             - "admin_pass="
             - "admin_stat=1"
-        networks: 
-            - web-network-01
-    db:
-        hostname: ark-sql1
-        image: mariadb:latest
-        command: mysqld
-        volumes:
-            - ./dbdata:/var/lib/mysql
-        environment:
-            - MYSQL_DATABASE=pterodb
-            - MYSQL_ROOT_PASSWORD=pterosqlpassword
-            - MYSQL_PASSWORD=pterodbpassword
-            - MYSQL_USER=ptero
+            - "php artisan pterodactyl:env"
+            - "php artisan pterodactyl:mail"
+            - "php artisan migrate"
+            - "php artisan db:seed"
+            - "php artisan pterodactyl:user"
         networks: 
             - web-network-01
 
