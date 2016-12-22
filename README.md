@@ -41,7 +41,7 @@ These containers were built with CentOS 7.1 using PHP7.
 `php artisan migrate`  
 `php artisan db:seed`  
 `php artisan pterodactyl:user`  
-*Log: Added these to the environment section of the docker-compose.yml for PHP.*~~
+*Log: Added these to the environment section of the PHP service within the `docker-compose.yml`*~~
 - Queue listeners (Crontab):  
 `crontab -e`  
 `* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1`  
