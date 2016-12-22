@@ -23,7 +23,7 @@ These containers were built with CentOS 7.1 using PHP7.
 - Creates database container using MariaDB
 - Configures database container environment variables (MYSQL_env)
 
-**Create**
+**Deploy**
 
 - Build the image  
 `docker build -t pterodactyl-standalone .` The location for pterodactyl-standalone is specified in the Dockerfile  
