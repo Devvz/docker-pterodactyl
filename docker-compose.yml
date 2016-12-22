@@ -13,7 +13,7 @@ services:
             - web-network-01
     php:
         hostname: ark-php1
-        image: pterodactyl-standalone
+        image: quay.io/repository/xyelz/pterodactyl-php
         volumes:
             - ./files/srv/web:/srv/web
         environment:
