@@ -32,7 +32,8 @@ These containers were built with CentOS 7.1 using PHP7.
 - Run the following commands during the Pterodactyl installation (Docker Compose):  
 `chmod -R 777 storage/* bootstrap/cache`  
 `chown -R www-data:www-data *`  
-- Perform the `composer setup` command (or is this what the `composer install` command is for?) (Dockerfile)  
+- ~~Perform the `composer setup` command (Dockerfile)  ~~
+~~*Log: We are already doing this using the `composer install --ansi --no-dev` command. This is the same command executed in a different way.~~
 - Environment configuration:  
 `php artisan pterodactyl:env`  
 `php artisan pterodactyl:mail`  
