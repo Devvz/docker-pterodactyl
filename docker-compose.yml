@@ -12,7 +12,7 @@ services:
         networks: 
             - web-network-01
     php:
-        hostname: ark-pterophp
+        hostname: ark-php1
         image: pterodactyl-standalone
         volumes:
             - ./files/srv/web:/srv/web
@@ -36,7 +36,7 @@ services:
         networks: 
             - web-network-01
     db:
-        hostname: ark-pterodb
+        hostname: ark-db1
         image: mariadb:latest
         command: mysqld
         volumes:
