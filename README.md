@@ -27,7 +27,7 @@ These containers were built with CentOS 7.1 using PHP7.
 
 - Build the image  
 `docker build -t pterodactyl-standalone .` The location for pterodactyl-standalone is specified in the Dockerfile  
-`docker-compose up` This reads the docker-compose.yml file and performs the operations within
+`docker-compose up` This reads the docker-compose.yml file which contains the image location on Quay.io, and then performs the operations within the yml file (creation of containers)
 
 **Missing Steps**
 
