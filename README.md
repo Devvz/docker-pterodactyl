@@ -17,9 +17,8 @@ These containers were built with CentOS 7.1 using PHP7.
 - Installs Composer
 
 **Docker Compose (creates containers for all services)**
-- Pulls image (created in above Dockerfile) from Quay.io
 - Creates web container using NGINX and copies correct configuration file (/etc/nginx/sites-available/pterodactyl.conf)
-- Creates Pterodactyl container using the image we created in the Dockerfile (based on PHP)
+- Creates Pterodactyl container by pulling image we created in the Dockerfile from Quay.io (based on PHP)
 - Configures Pterodactyl container environment variables (db_env)
 - Creates database container using MariaDB
 - Configures database container environment variables (MYSQL_env)
