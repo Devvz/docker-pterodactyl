@@ -29,18 +29,19 @@ These containers were built with CentOS 7.1 using PHP7.
 - ~~Run the following commands during the PHP installation (Dockerfile):~~  
 ~~`ln -s /usr/bin/php70 /usr/bin/php`  
 `ln -s /usr/bin/php70-phar /usr/bin/php-phar`  
-*Log: These symlinks are required to allow the `php` command to function, as it references `/usr/bin/php`. I have added them to the Dockerfile.*~~  
+*Log: 2016/12/22 - These symlinks are required to allow the `php` command to function, as it references `/usr/bin/php`. I have added them to the Dockerfile.*~~  
 - Run the following commands during the Pterodactyl installation (Docker Compose):  
 `chmod -R 777 storage/* bootstrap/cache`  
 `chown -R www-data:www-data *`  
 - ~~Perform the `composer setup` command (Dockerfile)  
-*Log: We are already doing this using the `composer install --ansi --no-dev` command. This is the same command executed in a different way.*~~
-- Environment configuration:  
+*Log: 2016/12/22 - We are already doing this using the `composer install --ansi --no-dev` command. This is the same command executed in a different way.*~~
+- ~~Environment configuration:  
 `php artisan pterodactyl:env`  
 `php artisan pterodactyl:mail`  
 `php artisan migrate`  
 `php artisan db:seed`  
-`php artisan pterodactyl:user`  
+`php artisan pterodactyl:user`
+*Log: 2016/12/22 - Created entrypoint.sh and added this to the Dockerfile to configure the `php artisan` settings.*~~  
 - Queue listeners (Crontab):  
 `crontab -e`  
 `* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1`  
@@ -58,7 +59,7 @@ user=www-data
 numprocs=2
 redirect_stderr=true
 stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`~~  
-~~*Log: Added `- ./files/etc/supervisor/conf.d/pterodactyl-worker.conf/:/etc/supervisor/conf.d/pterodactyl-worker.conf` to docker-composer.yml*~~  
+~~*Log: 2016/12/22 - Added `- ./files/etc/supervisor/conf.d/pterodactyl-worker.conf/:/etc/supervisor/conf.d/pterodactyl-worker.conf` to docker-composer.yml*~~  
 
 - Queue listeners (Update Supervisor):  
 `supervisorctl reread`  
