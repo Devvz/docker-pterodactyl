@@ -15,7 +15,7 @@ services:
         depends_on:
             - "db"
         hostname: ark-php1
-        image: quay.io/repository/xyelz/pterodactyl-php
+        image: quay.io/repository/xyelz/docker-pterodactyl
         volumes:
             - ./files/etc/supervisor/conf.d/pterodactyl-worker.conf/:/etc/supervisor/conf.d/pterodactyl-worker.conf/
         environment:
