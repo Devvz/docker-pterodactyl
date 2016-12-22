@@ -25,8 +25,8 @@ These containers were built with CentOS 7.1 using PHP7.
 
 **Create**
 
-- Build the image
-`docker build -t pterodactyl-standalone .` The location for pterodactyl-standalone is specified in the Dockerfile
+- Build the image  
+`docker build -t pterodactyl-standalone .` The location for pterodactyl-standalone is specified in the Dockerfile  
 `docker-compose up` This reads the docker-compose.yml file and performs the operations within
 
 **Missing Steps**
