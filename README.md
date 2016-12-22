@@ -44,7 +44,7 @@ These containers were built with CentOS 7.1 using PHP7.
 `* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1`  
 - Queue listeners (Supervisor):  
 `apt-get install supervisor`  
-`service supervisor start`  
+`service supervisor start`
 ~~- Queue listeners (Configuration File):~~  
 ~~`pterodactyl-worker.conf` in `/etc/supervisor/conf.d` directory~~  
 
