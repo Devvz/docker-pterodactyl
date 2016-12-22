@@ -55,8 +55,15 @@ autorestart=true
 user=www-data
 numprocs=2
 redirect_stderr=true
-stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
+stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`  
 
+- Queue listeners (Update Supervisor):  
+`supervisorctl reread`  
+`supervisorctl update`  
+
+- Queue listeners (Start Worker Queue):  
+`supervisorctl start pterodactyl-worker:*`  
+`systemctl enable supervisor`  
 
 ## Configuring the Containers
 
