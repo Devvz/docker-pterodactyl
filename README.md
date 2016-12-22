@@ -13,7 +13,7 @@ These containers were built with CentOS 7.1 using PHP7.
 - Installs PHP
 - Uploads required files (/etc/nginx/sites-available/pterodactyl.conf for PHP)
 - Changes directory to Pterodactyl (/var/www/html/pterodactyl)
-- Extracts Pterodactyl files 
+- Extracts Pterodactyl files to current directory
 - Installs Composer
 
 **Docker Compose (creates containers for all services)**
