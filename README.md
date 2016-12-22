@@ -9,14 +9,19 @@ These containers were built with CentOS 7.1 using PHP7.
 
 ## Overview
 
-- Pterodactyl/PHP image needs to be created (Dockerfile)
-- PHP needs to be installed (Dockerfile)
-- Required files need to be uploaded to the image (Dockerfile)
-* pterodactyl.conf
-- The directory needs to change to where Pterodactyl is installed (Dockerfile)
-- Pterodactyl panel dependencies need to be installed (Dockerfile)
-- Composer needs to be installed (Dockerfile)
+**Dockerfile (create Pterodactyl/PHP image)**
+- Install PHP
+- Upload required files (/etc/nginx/sites-available/pterodactyl.conf for PHP)
+- Change directory to Pterodactyl (/var/www/html/pterodactyl)
+- Extract Pterodactyl files 
+- Install Composer
 
+**Docker Compose (create containers for all services)**
+- Creates web container using NGINX
+- Creates Pterodactyl container using the image we created in the Dockerfile (based on PHP)
+- Configures Pterodactyl container environment variables (db_x)
+- Creates database container using MariaDB
+- Configures database container environment variables (MYSQL_x)
 
 ## Configuring the Containers
 
