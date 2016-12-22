@@ -45,7 +45,7 @@ These containers were built with CentOS 7.1 using PHP7.
 - Queue listeners (Supervisor):  
 `apt-get install supervisor`  
 `service supervisor start`  
-- ~~ Queue listeners (Configuration File):~~  
+- ~~Queue listeners (Configuration File):~~  
 ~~`pterodactyl-worker.conf` in `/etc/supervisor/conf.d` directory~~  
 
 `[program:pterodactyl-worker]
