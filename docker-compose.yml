@@ -10,6 +10,13 @@ services:
         volumes:
             - ./files/srv/web:/srv/web
             - ./files/etc/nginx/sites-available:/etc/nginx/sites-available
+        networks: 
+            - web-network-01
+    php:
+        hostname: ark-pterophp
+        image: pterodactyl-standalone
+        volumes:
+            - ./files/srv/web:/srv/web
         environment:
             - "db_host=ark-pterodb"
             - "db_port=3306"
@@ -27,13 +34,6 @@ services:
             - "admin_email="
             - "admin_pass="
             - "admin_stat=1"
-        networks: 
-            - web-network-01
-    php:
-        hostname: ark-pterophp
-        image: pterodactyl-standalone
-        volumes:
-            - ./files/srv/web:/srv/web
         networks: 
             - web-network-01
     db:
