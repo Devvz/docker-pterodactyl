@@ -56,7 +56,7 @@ user=www-data
 numprocs=2
 redirect_stderr=true
 stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`~~  
-~~*Added `- ./files/etc/supervisor/conf.d/pterodactyl-worker.conf/:/etc/supervisor/conf.d/pterodactyl-worker.conf` to docker-composer.yml*~~  
+~~*Log: Added `- ./files/etc/supervisor/conf.d/pterodactyl-worker.conf/:/etc/supervisor/conf.d/pterodactyl-worker.conf` to docker-composer.yml*~~  
 
 - Queue listeners (Update Supervisor):  
 `supervisorctl reread`  
