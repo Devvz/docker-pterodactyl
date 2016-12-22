@@ -78,3 +78,4 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
 ## Questions
 
 - If we're already copying files in the Dockerfile, why do we need to also perform the same command in the docker-compose.yml for the volumes?
+- The specified volume locations, what do they mean?
