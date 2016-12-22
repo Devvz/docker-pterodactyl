@@ -2,6 +2,7 @@ version: '2'
 
 services: 
     web:
+        hostname: pteroweb
         image: nginx:latest
         ports:
             - "80:80"
@@ -12,21 +13,25 @@ services:
         networks: 
             - web-network-01
     php:
+        hostname: pterophp
         image: pterodactyl-standalone
         volumes:
             - ./files/srv/web:/srv/web
         networks: 
             - web-network-01
-#    db:
-#        image: mariadb:latest
-#        command: mysqld
-#        volumes:
-#            - ./dbdata:/var/lib/mysql
-#        environment:
-#            - MYSQL_DATABASE=db
-#            - MYSQL_ROOT_PASSWORD=supersecretpassword
-#        networks: 
-#            - web-network-01
+    db:
+        hostname: pterodb
+        image: mariadb:latest
+        command: mysqld
+        volumes:
+            - ./dbdata:/var/lib/mysql
+        environment:
+            - MYSQL_DATABASE=pterodb
+            - MYSQL_ROOT_PASSWORD=pterosqlpassword
+            - MYSQL_PASSWORD=pterodbpassword
+            - MYSQL_USER=ptero
+        networks: 
+            - web-network-01
 
 networks: 
     web-network-01:
