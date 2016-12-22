@@ -9,7 +9,7 @@ services:
             - "443:443"
         volumes:
             - ./files/srv/web:/srv/web
-            - ./default.conf:/etc/nginx/conf.d/default.conf
+            - ./files/etc/nginx/sites-available:/etc/nginx/sites-available
         environment:
             - "db_host=ark-pterodb"
             - "db_port=3306"
