@@ -23,12 +23,6 @@ These containers were built with CentOS 7.1 using PHP7.
 - Creates database container using MariaDB
 - Configures database container environment variables (MYSQL_env)
 
-**Deploy**
-
-- Build the image  
-`docker build -t pterodactyl-standalone .`  
-`docker-compose up` This reads the docker-compose.yml file which contains the image location on Quay.io, and then performs the operations within the yml file (creation of containers)
-
 **Missing Steps**
 
 - Run the following commands during the PHP installation (Dockerfile):  
@@ -72,6 +66,12 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
 - During Docker Compose, do we need to run the following to symlink the new configuration file into the sites-enabled folder?  
 `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`  
 `systemctl restart nginx`
+
+## Deploy
+
+- Build the image  
+`docker build -t pterodactyl-standalone .`  
+`docker-compose up` This reads the docker-compose.yml file which contains the image location on Quay.io, and then performs the operations within the yml file (creation of containers)
 
 ## Configuring the Containers
 
