@@ -9,7 +9,7 @@ These containers were built with CentOS 7.1 using PHP7.
 
 ## Configuring the Containers
 
-**Database Container (pterodb)**
+### **Database Container (pterodb)**
 
 Pterodactyl requires a database. MariaDB is the recommended database.
 
