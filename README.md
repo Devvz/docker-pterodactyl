@@ -35,13 +35,12 @@ These containers were built with CentOS 7.1 using PHP7.
 `chown -R www-data:www-data *`  
 - ~~Perform the `composer setup` command (Dockerfile)  
 *Log: We are already doing this using the `composer install --ansi --no-dev` command. This is the same command executed in a different way.*~~
-- ~~Environment configuration:  
+- Environment configuration:  
 `php artisan pterodactyl:env`  
 `php artisan pterodactyl:mail`  
 `php artisan migrate`  
 `php artisan db:seed`  
 `php artisan pterodactyl:user`  
-*Log: Added these to the environment section of the PHP service within the `docker-compose.yml`*~~
 - Queue listeners (Crontab):  
 `crontab -e`  
 `* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1`  
