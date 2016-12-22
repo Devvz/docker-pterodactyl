@@ -26,7 +26,7 @@ These containers were built with CentOS 7.1 using PHP7.
 **Missing Steps**
 
 - Run the following commands during the PHP installation:  
-`ln -s /usr/bin/php70 /usr/bin/php
+`ln -s /usr/bin/php70 /usr/bin/php  
 ln -s /usr/bin/php70-phar /usr/bin/php-phar`
 
 ## Configuring the Containers
