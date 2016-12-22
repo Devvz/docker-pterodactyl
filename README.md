@@ -15,7 +15,7 @@ Pterodactyl requires a database. MariaDB is the recommended database.
 
 **Docker Compose Installation**
 
-
+`command that runs the docker command to pull the file. yay`
 
 **Manual Installation**
 
