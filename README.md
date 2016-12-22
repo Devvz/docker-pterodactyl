@@ -74,23 +74,5 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
 - Deploy the containers  
 `docker-compose up` This reads the docker-compose.yml file which contains the image location on Quay.io, and then performs the operations within the yml file (creation of containers)
 
-## Configuring the Containers
-
-### Database Container (MariaDB)
-
-Pterodactyl requires a database. MariaDB is the recommended database.
-
-**Docker Compose Installation**
-
-### Pterodactyl Container (PHP)
-
-**Docker Compose Installation**
-
-### Website Container (NGINX)
-
-Pterodactyl requires a web server. NGINX is the recommended web server.
-
-**Docker Compose Installation**
-
 ## Questions
 
