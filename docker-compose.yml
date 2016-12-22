@@ -8,7 +8,6 @@ services:
             - "80:80"
             - "443:443"
         volumes:
-            - ./files/srv/web/:/srv/web/
             - ./files/etc/nginx/sites-available/:/etc/nginx/sites-available/
         networks: 
             - web-network-01
