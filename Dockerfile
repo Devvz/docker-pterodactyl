@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
         unzip \
     && docker-php-ext-install -j$(nproc) iconv mcrypt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd opcache pdo mbstring tokenizer bcmath
+    && docker-php-ext-install -j$(nproc) gd opcache pdo mbstring tokenizer bcmath \
+    && ln -s /usr/bin/php70 /usr/bin/php \
+    && ln -s /usr/bin/php70-phar /usr/bin/php-phar
 
 COPY ./files/ /
 
