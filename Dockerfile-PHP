@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) gd opcache pdo mbstring tokenizer bcmath
 
 #COPY ./files /
+
 #WORKDIR /srv/web
 
 #RUN curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz \
