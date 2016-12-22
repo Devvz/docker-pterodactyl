@@ -9,7 +9,7 @@ These containers were built with CentOS 7.1 using PHP7.
 
 ## Configuring the Containers
 
-### **Database Container (pterodb)**
+### Database Container (pterodb)
 
 Pterodactyl requires a database. MariaDB is the recommended database.
 
@@ -23,7 +23,13 @@ The following command creates a container using the MariaDB image. It also confi
 
 `docker run -it -p 3306:3306 -v /srv/pterodactyl/database:/var/lib/mysql --name pterodb -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=pterodb -e MYSQL_USER=pterodactyl -e MYSQL_PASSWORD=pterodactylpassword --name pterodb -d mariadb`
 
-**Pterodactyl Container (pterophp)**
+### Pterodactyl Container (pterophp)
+
+**Docker Compose Installation**
+
+
+
+**Manual Installation**
 
 The following command creates the Pterodactyl panel container. It exposes port 9000 externally and internally which is required to allow this container to communicate with the web server container.
 
@@ -31,9 +37,15 @@ The following command creates the Pterodactyl panel container. It exposes port 9
 
 See "dockerfile" for Dockerfile information.
 
-**Website Container (pteroweb)**
+### Website Container (pteroweb)
 
 Pterodactyl requires a web server. NGINX is the recommended web server.
+
+**Docker Compose Installation**
+
+
+
+**Manual Installation**
 
 The following command creates a container using the NGINX image. It exposes port 80 and 443 externally and internally. It also links the containers to one another which is required for communication. It also configures the necessary environment settings for the web server to function properly:
 
