@@ -18,7 +18,6 @@ services:
         image: quay.io/repository/xyelz/pterodactyl-php
         volumes:
             - ./files/etc/supervisor/conf.d/pterodactyl-worker.conf/:/etc/supervisor/conf.d/pterodactyl-worker.conf/
-#           - ./files/srv/web:/srv/web
         environment:
             - "db_host=ark-pterodb"
             - "db_port=3306"
