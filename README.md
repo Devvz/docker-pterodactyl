@@ -28,7 +28,7 @@ These containers were built with CentOS 7.1 using PHP7.
 
 - ~~Run the following commands during the PHP installation (Dockerfile):~~  
 ~~`ln -s /usr/bin/php70 /usr/bin/php`~~  
-~~`ln -s /usr/bin/php70-phar /usr/bin/php-phar`~~
+~~`ln -s /usr/bin/php70-phar /usr/bin/php-phar`~~  
 ~~*Log: These symlinks are required to allow the `php` command to function, as it references `/usr/bin/php`*~~  
 - Run the following commands during the Pterodactyl installation (Docker Compose):  
 `chmod -R 777 storage/* bootstrap/cache`  
