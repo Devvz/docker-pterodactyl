@@ -16,7 +16,7 @@ These containers were built with CentOS 7.1 using PHP7.
 - Extracts Pterodactyl files to current directory on image (for panel installation)
 - Installs Composer on image
 
-**Docker Compose (creates containers for all services)**
+**docker-compose.yml (creates containers for all services)**
 - Creates web container using NGINX
 - Configures NGINX by copying configuration file (/etc/nginx/sites-available/pterodactyl.conf)
 - Creates Pterodactyl container by pulling image we created in the Dockerfile from Quay.io (based on PHP)
