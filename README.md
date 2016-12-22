@@ -60,10 +60,12 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
 - Queue listeners (Update Supervisor):  
 `supervisorctl reread`  
 `supervisorctl update`  
-
 - Queue listeners (Start Worker Queue):  
 `supervisorctl start pterodactyl-worker:*`  
 `systemctl enable supervisor`  
+- During Docker Compose, do we need to run the following to symlink the new configuration file into the sites-enabled folder?
+`ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`
+`systemctl restart nginx`
 
 ## Configuring the Containers
 
