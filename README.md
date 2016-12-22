@@ -13,6 +13,12 @@ These containers were built with CentOS 7.1 using PHP7.
 
 Pterodactyl requires a database. MariaDB is the recommended database.
 
+**Docker Compose Installation**
+
+
+
+**Manual Installation**
+
 The following command creates a container using the MariaDB image. It also configures the necessary environment settings for the database to function properly:
 
 `docker run -it -p 3306:3306 -v /srv/pterodactyl/database:/var/lib/mysql --name pterodb -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=pterodb -e MYSQL_USER=pterodactyl -e MYSQL_PASSWORD=pterodactylpassword --name pterodb -d mariadb`
