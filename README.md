@@ -71,7 +71,7 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
 
 - Build the image  
 `docker build -t pterodactyl-standalone .`  
-- Deploy the containers
+- Deploy the containers  
 `docker-compose up` This reads the docker-compose.yml file which contains the image location on Quay.io, and then performs the operations within the yml file (creation of containers)
 
 ## Configuring the Containers
