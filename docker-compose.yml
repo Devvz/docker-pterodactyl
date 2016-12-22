@@ -27,6 +27,7 @@ services:
 #            - MYSQL_ROOT_PASSWORD=supersecretpassword
 #        networks: 
 #            - web-network-01
+
 networks: 
     web-network-01:
         driver: bridge
