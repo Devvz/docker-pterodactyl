@@ -2,7 +2,7 @@ version: '2'
 
 services: 
     web:
-        hostname: pteroweb
+        hostname: ark-pteroweb
         image: nginx:latest
         ports:
             - "80:80"
@@ -10,17 +10,34 @@ services:
         volumes:
             - ./files/srv/web:/srv/web
             - ./default.conf:/etc/nginx/conf.d/default.conf
+        environment:
+            - "db_host=ark-pterodb"
+            - "db_port=3306"
+            - "db_name=pterodb"
+            - "db_user=ptero"
+            - "db_pass=pterodbpassword"
+            - "panel_url="
+            - "timezone="
+            - "email_driver="
+            - "panel_email="
+            - "email_user="
+            - "email_pass="
+            - "email_domain="
+            - "email_port="
+            - "admin_email="
+            - "admin_pass="
+            - "admin_stat=1"
         networks: 
             - web-network-01
     php:
-        hostname: pterophp
+        hostname: ark-pterophp
         image: pterodactyl-standalone
         volumes:
             - ./files/srv/web:/srv/web
         networks: 
             - web-network-01
     db:
-        hostname: pterodb
+        hostname: ark-pterodb
         image: mariadb:latest
         command: mysqld
         volumes:
