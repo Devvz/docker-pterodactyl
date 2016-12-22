@@ -36,7 +36,7 @@ services:
         networks: 
             - web-network-01
     db:
-        hostname: ark-db1
+        hostname: ark-sql1
         image: mariadb:latest
         command: mysqld
         volumes:
