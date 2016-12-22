@@ -20,7 +20,7 @@ These containers were built with CentOS 7.1 using PHP7.
 - Creates web container using NGINX
 - Configures NGINX by copying configuration file (/etc/nginx/sites-available/pterodactyl.conf)
 - Creates Pterodactyl container by pulling image we created in the Dockerfile from Quay.io (based on PHP)
-- Configures Pterodactyl container environment variables (db_env)
+- Configures Pterodactyl container environment variables (db_env) and copies over queue listener configuration file (/etc/supervisor/conf.d/pterodactyl-worker.conf)
 - Creates database container using MariaDB
 - Configures database container environment variables (MYSQL_env)
 
