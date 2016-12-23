@@ -44,6 +44,7 @@ services:
         image: mariadb:latest
         command: mysqld
         volumes:
+            # Should we change the below volume location?
             - ./dbdata:/var/lib/mysql
         environment:
             - MYSQL_DATABASE=pterodb
