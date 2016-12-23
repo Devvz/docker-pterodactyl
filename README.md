@@ -73,8 +73,7 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`~~
 
 ## Deploy
 
-- Move docker-compose.yml to a local directory  
-`???`  
+- Move docker-compose.yml to a local directory on the host  
 - Deploy the containers  
 `docker-compose up` This reads the docker-compose.yml file which pulls the image location from Quay.io and then performs the operations within the yml file (creation of containers)
 
