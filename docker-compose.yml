@@ -8,6 +8,7 @@ services:
             - "80:80"
             - "443:443"
         volumes:
+            # The below location doesn't exist. Why? Because ./files is referring to the host, but additionally we never copied any files up for nginx.
             - ./files/etc/nginx/sites-available/pterodactyl.conf/:/etc/nginx/sites-available/pterodactyl.conf/
         networks:
             - web-network-01
