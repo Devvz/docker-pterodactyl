@@ -24,7 +24,7 @@ services:
         image: quay.io/xyelz/docker-pterodactyl
         volumes:
             - sharedvolumeXX53:/apps/pterodactyl/
-            - ./files/etc/supervisor/conf.d/pterodactyl-worker.conf:/etc/supervisor/conf.d/pterodactyl-worker.conf
+            #- ./files/etc/supervisor/conf.d/pterodactyl-worker.conf:/etc/supervisor/conf.d/pterodactyl-worker.conf
         environment:
             - db_host=ark-sql1
             - db_port=3306
