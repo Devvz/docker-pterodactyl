@@ -10,6 +10,7 @@ services:
         volumes:
             # The below location doesn't exist. Why? Because ./files is referring to the host, but additionally we never copied any files up for nginx.
             - ./files/etc/nginx/sites-available/pterodactyl.conf/:/etc/nginx/sites-available/pterodactyl.conf/
+            - /sharedvolumeXX53/:/var/www/pterodactyl/html/public
         networks:
             - web-network-01
     php:
@@ -20,6 +21,7 @@ services:
         volumes:
             # Why are we referring to ./files in the below location? Didn't we copy them over in the Dockerfile?
             - ./files/etc/supervisor/conf.d/pterodactyl-worker.conf/:/etc/supervisor/conf.d/pterodactyl-worker.conf/
+            - /sharedvolumeXX53/:/apps/pterodactyl
         environment:
             - "db_host=ark-pterodb"
             - "db_port=3306"
