@@ -15,8 +15,8 @@ These containers were built with CentOS 7.1 using PHP7.
 ~~`ln -s /usr/bin/php70 /usr/bin/php`  
 `ln -s /usr/bin/php70-phar /usr/bin/php-phar`  
 *Log: 2016/12/22 - These symlinks are required to allow the `php` command to function, as it references `/usr/bin/php`. I have added them to the Dockerfile.*~~  
-- Uploads the entire `/files` directory to image (`/etc/supervisor/conf.d/pterodactyl-worker.conf/` for queue listeners and `/var/www/html/entrypoint.sh` for `php artisan` settings)
-- Changes directory to extraction location (`/apps/pterodactyl/`)
+- Uploads the `/files` directory from GitHub to host (contains `/etc/supervisor/conf.d/pterodactyl-worker.conf/` for queue listeners and `/var/www/html/entrypoint.sh` for `php artisan` settings)
+- Changes directory to extraction destination (`/apps/pterodactyl/`)
 - Extracts Pterodactyl files to current directory on image (for panel installation)
 - Installs Composer on image
 - ~~Perform the `composer setup` command (Dockerfile)  
@@ -31,9 +31,9 @@ These containers were built with CentOS 7.1 using PHP7.
 
 **docker-compose.yml (creates containers for all services)**
 - Creates web container using NGINX
-- Configures NGINX by copying configuration file from host (`/etc/nginx/sites-available/pterodactyl.conf`) (this file is modified to point to the php service on port 9000 instead of locally) 
+- Configures NGINX by copying configuration file from host (`/etc/nginx/sites-available/pterodactyl.conf`) (this file is modified to point to the php service on port 9000 instead of locally)
 - Creates Pterodactyl container by pulling image we created in the Dockerfile from Quay.io (for the panel and PHP)
-- Configures Pterodactyl container environment variables (db_env) (queue listener configuration file was already copied over earlier from Dockerfile)  
+- Configures Pterodactyl container environment variables (db_env) and copies configuration file from host (`/etc/supervisor/conf.d/pterodactyl-worker.conf)
 - ~~3) Queue listeners (Configuration File):  
 `pterodactyl-worker.conf` in `/etc/supervisor/conf.d` directory  
 `[program:pterodactyl-worker]
@@ -44,8 +44,8 @@ autorestart=true
 user=www-data
 numprocs=2
 redirect_stderr=true
-stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`~~  
-~~*Log: 2016/12/22 - Added `- ./files/etc/supervisor/conf.d/pterodactyl-worker.conf/:/etc/supervisor/conf.d/pterodactyl-worker.conf` to docker-composer.yml*~~  
+stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`  
+*Log: 2016/12/22 - Added `- ./files/etc/supervisor/conf.d/pterodactyl-worker.conf/:/etc/supervisor/conf.d/pterodactyl-worker.conf` to docker-composer.yml*~~  
 - Creates database container using MariaDB
 - Configures database container environment variables (MYSQL_env)
 
