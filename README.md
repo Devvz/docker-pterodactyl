@@ -11,7 +11,7 @@ These containers were built with CentOS 7.1 using PHP7.
 
 **Dockerfile (configures Pterodactyl/PHP image)**
 - Installs PHP on image
-- ~~Run the following commands during the PHP installation (Dockerfile):~~
+- ~~Run the following commands during the PHP installation (Dockerfile):~~  
 ~~`ln -s /usr/bin/php70 /usr/bin/php`  
 `ln -s /usr/bin/php70-phar /usr/bin/php-phar`  
 *Log: 2016/12/22 - These symlinks are required to allow the `php` command to function, as it references `/usr/bin/php`. I have added them to the Dockerfile.*~~  
