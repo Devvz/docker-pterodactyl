@@ -31,7 +31,7 @@ These containers were built with CentOS 7.1 using PHP7.
 
 **docker-compose.yml (creates containers for all services)**
 - Creates web container using NGINX
-- Configures NGINX by copying configuration file from host (`/etc/nginx/sites-available/pterodactyl.conf`)
+- Configures NGINX by copying configuration file from host (`/etc/nginx/sites-available/pterodactyl.conf`) (this file is modified to point to the php service on port 9000 instead of locally) 
 - Creates Pterodactyl container by pulling image we created in the Dockerfile from Quay.io (for the panel and PHP)
 - Configures Pterodactyl container environment variables (db_env) and copies over queue listener configuration file from host (`/etc/supervisor/conf.d/pterodactyl-worker.conf`)  
 - ~~3) Queue listeners (Configuration File):  
