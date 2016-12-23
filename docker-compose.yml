@@ -58,7 +58,8 @@ services:
             - MYSQL_USER=ptero
         networks:
             - web-network-01
-
+volumes:
+    sharedvolumeXX53:
 networks:
     web-network-01:
         driver: bridge
