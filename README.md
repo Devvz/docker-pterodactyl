@@ -34,22 +34,7 @@ These containers were built with CentOS 7.1 using PHP7.
 - Configures NGINX by copying configuration file from host (`/etc/nginx/sites-available/pterodactyl.conf`)
 - Creates Pterodactyl container by pulling image we created in the Dockerfile from Quay.io (for the panel and PHP)
 - Configures Pterodactyl container environment variables (db_env) and copies over queue listener configuration file from host (`/etc/supervisor/conf.d/pterodactyl-worker.conf`)  
-- Creates database container using MariaDB
-- Configures database container environment variables (MYSQL_env)
-
-**Missing Steps**
-
-- Run the following commands during the Pterodactyl installation (docker-compose.yml):  
-`chmod -R 777 storage/* bootstrap/cache`  
-`chown -R www-data:www-data *`  
-
-- Queue listeners (Crontab):  
-`crontab -e`  
-`* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1`  
-- Queue listeners (Supervisor):  
-`apt-get install supervisor`  
-`service supervisor start`  
-- ~~Queue listeners (Configuration File):  
+~~3) Queue listeners (Configuration File):  
 `pterodactyl-worker.conf` in `/etc/supervisor/conf.d` directory  
 `[program:pterodactyl-worker]
 process_name=%(program_name)s_%(process_num)02d
@@ -61,10 +46,25 @@ numprocs=2
 redirect_stderr=true
 stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`~~  
 ~~*Log: 2016/12/22 - Added `- ./files/etc/supervisor/conf.d/pterodactyl-worker.conf/:/etc/supervisor/conf.d/pterodactyl-worker.conf` to docker-composer.yml*~~  
-- Queue listeners (Update Supervisor):  
+- Creates database container using MariaDB
+- Configures database container environment variables (MYSQL_env)
+
+**Missing Steps**
+
+- Run the following commands during the Pterodactyl installation (docker-compose.yml):  
+`chmod -R 777 storage/* bootstrap/cache`  
+`chown -R www-data:www-data *`  
+
+- 1) Queue listeners (Crontab):  
+`crontab -e`  
+`* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1`  
+- 2) Queue listeners (Supervisor):  
+`apt-get install supervisor`  
+`service supervisor start`  
+- 4) Queue listeners (Update Supervisor):  
 `supervisorctl reread`  
 `supervisorctl update`  
-- Queue listeners (Start Worker Queue):  
+- 5) Queue listeners (Start Worker Queue):  
 `supervisorctl start pterodactyl-worker:*`  
 `systemctl enable supervisor`  
 - In the docker-compose.yml, do we need to run the following to symlink the new configuration file into the sites-enabled folder?  
