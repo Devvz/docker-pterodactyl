@@ -10,13 +10,13 @@ These containers were built with CentOS 7.1 using PHP7.
 ## Overview
 
 **Dockerfile (configures Pterodactyl/PHP image)**
-- Installs PHP on image
+- Installs PHP on image (this is actually a shared volume with the PHP and NGINX container)
 - ~~Run the following commands during the PHP installation (Dockerfile):~~  
 ~~`ln -s /usr/bin/php70 /usr/bin/php`  
 `ln -s /usr/bin/php70-phar /usr/bin/php-phar`  
 *Log: 2016/12/22 - These symlinks are required to allow the `php` command to function, as it references `/usr/bin/php`. I have added them to the Dockerfile.*~~  
-- Uploads required files on image (`/etc/supervisor/conf.d/pterodactyl-worker.conf` for queue listeners and `/var/www/html/entrypoint.sh` for `php artisan` settings)
-- Changes directory to Pterodactyl (`/var/www/html/pterodactyl`)
+- Uploads required files on image (`/etc/supervisor/conf.d/pterodactyl-worker.conf/` for queue listeners and `/var/www/html/entrypoint.sh` for `php artisan` settings)
+- Changes directory to extraction location (`/apps/pterodactyl/`)
 - Extracts Pterodactyl files to current directory on image (for panel installation)
 - Installs Composer on image
 - ~~Perform the `composer setup` command (Dockerfile)  
