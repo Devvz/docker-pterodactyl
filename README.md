@@ -14,7 +14,17 @@ These containers were built with CentOS 7.1 using PHP7.
 - Uploads required files on image (`/etc/supervisor/conf.d/pterodactyl-worker.conf` for queue listeners and `/var/www/html/entrypoint.sh` for `php artisan` settings)
 - Changes directory to Pterodactyl (`/var/www/html/pterodactyl`)
 - Extracts Pterodactyl files to current directory on image (for panel installation)
-- Installs Composer on image
+- Installs Composer on image  
+- ~~Perform the `composer setup` command (Dockerfile)  
+*Log: 2016/12/22 - We are already doing this using the `composer install --ansi --no-dev` command. This is the same command executed in a different way.*~~  
+- `ENTRYPOINT` specifies location to `php artisan` settings  
+- ~~Environment configuration:  
+`php artisan pterodactyl:env`  
+`php artisan pterodactyl:mail`  
+`php artisan migrate`  
+`php artisan db:seed`  
+`php artisan pterodactyl:user`
+*Log: 2016/12/22 - Created entrypoint.sh and added this to the Dockerfile to configure the `php artisan` settings.*~~  
 
 **docker-compose.yml (creates containers for all services)**
 - Creates web container using NGINX
@@ -33,15 +43,7 @@ These containers were built with CentOS 7.1 using PHP7.
 - Run the following commands during the Pterodactyl installation (Docker Compose):  
 `chmod -R 777 storage/* bootstrap/cache`  
 `chown -R www-data:www-data *`  
-- ~~Perform the `composer setup` command (Dockerfile)  
-*Log: 2016/12/22 - We are already doing this using the `composer install --ansi --no-dev` command. This is the same command executed in a different way.*~~
-- ~~Environment configuration:  
-`php artisan pterodactyl:env`  
-`php artisan pterodactyl:mail`  
-`php artisan migrate`  
-`php artisan db:seed`  
-`php artisan pterodactyl:user`
-*Log: 2016/12/22 - Created entrypoint.sh and added this to the Dockerfile to configure the `php artisan` settings.*~~  
+
 - Queue listeners (Crontab):  
 `crontab -e`  
 `* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1`  
