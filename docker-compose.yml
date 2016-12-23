@@ -21,7 +21,7 @@ services:
             - "sql"
         container_name: php1
         hostname: ark-php1
-        image: quay.io/xyelz/docker-pterodactyl/
+        image: quay.io/xyelz/docker-pterodactyl
         volumes:
             - sharedvolumeXX53:/apps/pterodactyl/
         environment:
