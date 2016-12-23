@@ -79,7 +79,7 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`
 
 ## Questions
 
-- How do we copy over the required files for the NGINX container?
-- The volume specified in the `docker-compose.yml` for MariaDB `- ./dbdata:/var/lib/mysql`, what is this referring to?
+- Copying over the files is beginning to become confusing since we're copying the `./files/` directory to the host but we're also now installing Pterodactyl to a shared volume.
+- How are we supposed to copy over the required files for the NGINX container? Right now we're using them in the `./files`/ directory but this really should just be for PHP.
+- The volume specified in the `docker-compose.yml` for MariaDB `- ./dbdata:/var/lib/mysql`, what is this source and destination?
 - Right now everything is using the shared volume at the top level. Can we make folders in the shared volume to separate the data?
-- The `COPY` string in the Dockerfile is only moving `files` right now. What about the NGINX configuration file?
