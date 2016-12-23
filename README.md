@@ -82,3 +82,4 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`~~
 - How do we copy over the required files for the NGINX container?
 - The volume specified in the `docker-compose.yml` for MariaDB `- ./dbdata:/var/lib/mysql`, what is this referring to?
 - Right now everything is using the shared volume at the top level. Can we make folders in the shared volume to separate the data?
+- The `COPY` string in the Dockerfile is only moving `files` right now. What about the NGINX configuration file?
