@@ -17,9 +17,8 @@ These containers were built with CentOS 7.1 using PHP7.
 - Installs Composer on image  
 - ~~Perform the `composer setup` command (Dockerfile)  
 *Log: 2016/12/22 - We are already doing this using the `composer install --ansi --no-dev` command. This is the same command executed in a different way.*~~  
-- `ENTRYPOINT` specifies location to `php artisan` settings  
-- ~~Environment configuration:  
-`php artisan pterodactyl:env`  
+- `ENTRYPOINT` specifies location to `php artisan` environment configuration settings  
+~~`php artisan pterodactyl:env`  
 `php artisan pterodactyl:mail`  
 `php artisan migrate`  
 `php artisan db:seed`  
