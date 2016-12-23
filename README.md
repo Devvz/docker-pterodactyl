@@ -22,7 +22,7 @@ These containers were built with CentOS 7.1 using PHP7.
 `php artisan pterodactyl:mail`  
 `php artisan migrate`  
 `php artisan db:seed`  
-`php artisan pterodactyl:user`
+`php artisan pterodactyl:user`  
 *Log: 2016/12/22 - Created entrypoint.sh and added this to the Dockerfile to configure the `php artisan` settings.*~~  
 
 **docker-compose.yml (creates containers for all services)**
