@@ -11,7 +11,7 @@ These containers were built with CentOS 7.1 using PHP7.
 
 **Dockerfile (configures Pterodactyl/PHP image)**
 - Installs PHP on image
-- Uploads required files on image (`/etc/nginx/sites-available/pterodactyl.conf` for PHP)
+- Uploads required files on image (`/etc/supervisor/conf.d/pterodactyl-worker.conf` for queue listeners and `/var/www/html/entrypoint.sh for `php artisan` settings)
 - Changes directory to Pterodactyl (`/var/www/html/pterodactyl`)
 - Extracts Pterodactyl files to current directory on image (for panel installation)
 - Installs Composer on image
