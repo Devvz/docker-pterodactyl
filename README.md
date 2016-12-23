@@ -15,7 +15,7 @@ These containers were built with CentOS 7.1 using PHP7.
 ~~`ln -s /usr/bin/php70 /usr/bin/php`  
 `ln -s /usr/bin/php70-phar /usr/bin/php-phar`  
 *Log: 2016/12/22 - These symlinks are required to allow the `php` command to function, as it references `/usr/bin/php`. I have added them to the Dockerfile.*~~  
-- Uploads required files on image (`/etc/supervisor/conf.d/pterodactyl-worker.conf/` for queue listeners and `/var/www/html/entrypoint.sh` for `php artisan` settings)
+- Uploads the entire `/files` directory to image (`/etc/supervisor/conf.d/pterodactyl-worker.conf/` for queue listeners and `/var/www/html/entrypoint.sh` for `php artisan` settings)
 - Changes directory to extraction location (`/apps/pterodactyl/`)
 - Extracts Pterodactyl files to current directory on image (for panel installation)
 - Installs Composer on image
@@ -33,7 +33,7 @@ These containers were built with CentOS 7.1 using PHP7.
 - Creates web container using NGINX
 - Configures NGINX by copying configuration file from host (`/etc/nginx/sites-available/pterodactyl.conf`) (this file is modified to point to the php service on port 9000 instead of locally) 
 - Creates Pterodactyl container by pulling image we created in the Dockerfile from Quay.io (for the panel and PHP)
-- Configures Pterodactyl container environment variables (db_env) and copies over queue listener configuration file from host (`/etc/supervisor/conf.d/pterodactyl-worker.conf`)  
+- Configures Pterodactyl container environment variables (db_env) (queue listener configuration file was already copied over earlier from Dockerfile)  
 - ~~3) Queue listeners (Configuration File):  
 `pterodactyl-worker.conf` in `/etc/supervisor/conf.d` directory  
 `[program:pterodactyl-worker]
