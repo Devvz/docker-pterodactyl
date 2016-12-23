@@ -54,7 +54,6 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`~~
 - Run the following commands during the Pterodactyl installation (docker-compose.yml):  
 `chmod -R 777 storage/* bootstrap/cache`  
 `chown -R www-data:www-data *`  
-
 - 1) Queue listeners (Crontab):  
 `crontab -e`  
 `* * * * * php /var/www/pterodactyl/html/artisan schedule:run >> /dev/null 2>&1`  
