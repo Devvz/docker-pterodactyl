@@ -34,7 +34,7 @@ These containers were built with CentOS 7.1 using PHP7.
 - Configures NGINX by copying configuration file from host (`/etc/nginx/sites-available/pterodactyl.conf`)
 - Creates Pterodactyl container by pulling image we created in the Dockerfile from Quay.io (for the panel and PHP)
 - Configures Pterodactyl container environment variables (db_env) and copies over queue listener configuration file from host (`/etc/supervisor/conf.d/pterodactyl-worker.conf`)  
-~~3) Queue listeners (Configuration File):  
+- ~~3) Queue listeners (Configuration File):  
 `pterodactyl-worker.conf` in `/etc/supervisor/conf.d` directory  
 `[program:pterodactyl-worker]
 process_name=%(program_name)s_%(process_num)02d
