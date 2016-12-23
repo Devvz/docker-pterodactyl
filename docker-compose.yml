@@ -12,7 +12,7 @@ services:
             - ./files/etc/nginx/sites-available/pterodactyl.conf:/etc/nginx/sites-available/pterodactyl.conf
             # The below is a workaround for adding the symlink for sites-enabled.
             #- ./files/etc/nginx/sites-enabled/pterodactyl.conf:/etc/nginx/sites-enabled/pterodactyl.conf
-            - /sharedvolumeXX53/:/var/www/pterodactyl/html/public/
+            - sharedvolumeXX53:/var/www/pterodactyl/html/public/
         networks:
             - web-network-01
     php:
@@ -21,7 +21,7 @@ services:
         hostname: ark-php1
         image: quay.io/xyelz/docker-pterodactyl/
         volumes:
-            - /sharedvolumeXX53/:/apps/pterodactyl/
+            - sharedvolumeXX53:/apps/pterodactyl/
         environment:
             - "db_host=ark-pterodb"
             - "db_port=3306"
