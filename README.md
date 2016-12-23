@@ -78,5 +78,6 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`~~
 
 ## Questions
 
+- Create a shared volume for PHP and NGINX.
 - How do we copy over the required files for the NGINX container?
 - The volume specified in the `docker-compose.yml` for MariaDB `- ./dbdata:/var/lib/mysql`, what is this referring to?
