@@ -66,9 +66,10 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`~~
 - 5) Queue listeners (Start Worker Queue):  
 `supervisorctl start pterodactyl-worker:*`  
 `systemctl enable supervisor`  
-- In the docker-compose.yml, do we need to run the following to symlink the new configuration file into the sites-enabled folder?  
+- Run the following to symlink the new configuration file into the sites-enabled folder  
 `ln -s /etc/nginx/sites-available/pterodactyl.conf /etc/nginx/sites-enabled/pterodactyl.conf`  
 `systemctl restart nginx`
+*Log: This can be done via a symlink (somehow) or, alternatively, by simply copying the file into both directories in the `docker-compose.yml`*
 
 ## Deploy
 
