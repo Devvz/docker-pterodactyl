@@ -9,7 +9,7 @@ services:
             - "443:443"
         volumes:
             # The below location doesn't exist. Why? Because ./files is referring to the host, but additionally we never copied any files up for nginx.
-            #- ./files/etc/nginx/sites-available/pterodactyl.conf:/etc/nginx/sites-available/pterodactyl.conf
+            - ./files/etc/nginx/sites-available/pterodactyl.conf:/etc/nginx/sites-available/pterodactyl.conf
             # The below is a workaround for adding the symlink for sites-enabled.
             #- ./files/etc/nginx/sites-enabled/pterodactyl.conf:/etc/nginx/sites-enabled/pterodactyl.conf
             - /sharedvolumeXX53/:/var/www/pterodactyl/html/public/
