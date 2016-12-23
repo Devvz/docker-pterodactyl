@@ -51,7 +51,7 @@ services:
         command: mysqld
         volumes:
             # Should we change the below volume location?
-            - ./dbdata:/var/lib/mysql/
+            - dbdata:/var/lib/mysql/
         environment:
             - MYSQL_DATABASE=pterodb
             - MYSQL_ROOT_PASSWORD=pterosqlpassword
@@ -61,6 +61,7 @@ services:
             - web-network-01
 volumes:
     sharedvolumeXX53:
+    dbdata:
 networks:
     web-network-01:
         driver: bridge
