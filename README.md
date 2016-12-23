@@ -39,7 +39,7 @@ These containers were built with CentOS 7.1 using PHP7.
 
 **Missing Steps**
 
-- Run the following commands during the Pterodactyl installation (Docker Compose):  
+- Run the following commands during the Pterodactyl installation (docker-compose.yml):  
 `chmod -R 777 storage/* bootstrap/cache`  
 `chown -R www-data:www-data *`  
 
@@ -61,7 +61,6 @@ numprocs=2
 redirect_stderr=true
 stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`~~  
 ~~*Log: 2016/12/22 - Added `- ./files/etc/supervisor/conf.d/pterodactyl-worker.conf/:/etc/supervisor/conf.d/pterodactyl-worker.conf` to docker-composer.yml*~~  
-
 - Queue listeners (Update Supervisor):  
 `supervisorctl reread`  
 `supervisorctl update`  
