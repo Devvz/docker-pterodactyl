@@ -79,6 +79,6 @@ stdout_logfile=/var/www/pterodactyl/html/storage/logs/queue-worker.log`~~
 
 ## Questions
 
-- If we are performing a `COPY ./files/ /` in the Dockerfile (for the PHP container), then why are we also performing the `volume` command in the docker-compose.yml and referencing the ./files/ location? I would think if the volume command means copying files from the *host* to the *destination*, don't the files already exist from when we ran the `COPY` string?
-- The `COPY` command in the Dockerfile, this only applies to the Pterodactyl/PHP container. How do we copy over the required files for NGINX?
+- If we are performing a `COPY ./files/ /` in the Dockerfile (for the PHP container), then why are we also performing the `volume` command in the docker-compose.yml and referencing the ./files/ location as the source? I would think if the volume command means copying files from the *host* to the *destination*, don't the files already exist from when we ran the `COPY` string?
+- The `COPY` command in the Dockerfile, this only applies to the Pterodactyl/PHP container. So then how do we copy over the required files for the NGINX container?
 - The volume specified in the `docker-compose.yml` for MariaDB `- ./dbdata:/var/lib/mysql`, what is this referring to?
