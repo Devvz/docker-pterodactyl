@@ -11,10 +11,14 @@ These containers were built with CentOS 7.1 using PHP7.
 
 **Dockerfile (configures Pterodactyl/PHP image)**
 - Installs PHP on image
+- ~~Run the following commands during the PHP installation (Dockerfile):~~
+~~`ln -s /usr/bin/php70 /usr/bin/php`  
+`ln -s /usr/bin/php70-phar /usr/bin/php-phar`  
+*Log: 2016/12/22 - These symlinks are required to allow the `php` command to function, as it references `/usr/bin/php`. I have added them to the Dockerfile.*~~  
 - Uploads required files on image (`/etc/supervisor/conf.d/pterodactyl-worker.conf` for queue listeners and `/var/www/html/entrypoint.sh` for `php artisan` settings)
 - Changes directory to Pterodactyl (`/var/www/html/pterodactyl`)
 - Extracts Pterodactyl files to current directory on image (for panel installation)
-- Installs Composer on image  
+- Installs Composer on image
 - ~~Perform the `composer setup` command (Dockerfile)  
 *Log: 2016/12/22 - We are already doing this using the `composer install --ansi --no-dev` command. This is the same command executed in a different way.*~~  
 - `ENTRYPOINT` specifies location to `php artisan` environment configuration settings  
@@ -35,10 +39,6 @@ These containers were built with CentOS 7.1 using PHP7.
 
 **Missing Steps**
 
-- ~~Run the following commands during the PHP installation (Dockerfile):~~  
-~~`ln -s /usr/bin/php70 /usr/bin/php`  
-`ln -s /usr/bin/php70-phar /usr/bin/php-phar`  
-*Log: 2016/12/22 - These symlinks are required to allow the `php` command to function, as it references `/usr/bin/php`. I have added them to the Dockerfile.*~~  
 - Run the following commands during the Pterodactyl installation (Docker Compose):  
 `chmod -R 777 storage/* bootstrap/cache`  
 `chown -R www-data:www-data *`  
