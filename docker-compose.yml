@@ -16,7 +16,7 @@ services:
         depends_on:
             - "db"
         hostname: ark-php1
-        image: quay.io/xyelz/docker-pterodactyl
+        image: quay.io/xyelz/docker-pterodactyl:latest
         volumes:
             # Why are we referring to ./files in the below location? Didn't we copy them over in the Dockerfile?
             - ./files/etc/supervisor/conf.d/pterodactyl-worker.conf/:/etc/supervisor/conf.d/pterodactyl-worker.conf/
