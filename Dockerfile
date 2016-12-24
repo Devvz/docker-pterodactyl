@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     && ln -s /usr/bin/php70 /usr/bin/php \
     && ln -s /usr/bin/php70-phar /usr/bin/php-phar
 
-COPY ./files/ /
+#COPY ./files/ /
 
 WORKDIR /apps/pterodactyl/
 
@@ -24,4 +24,4 @@ RUN curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.t
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer install --ansi --no-dev
 
-ENTRYPOINT ["/var/www/html/entrypoint.sh"]
+#ENTRYPOINT ["/var/www/html/entrypoint.sh"]
