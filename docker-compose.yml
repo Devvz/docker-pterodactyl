@@ -60,8 +60,8 @@ services:
         networks:
             - web-network-01
 volumes:
-    "sharedvolumeXX53:"
-    "dbdata:"
+    sharedvolumeXX53:
+    dbdata:
 networks:
     web-network-01:
         driver: bridge
