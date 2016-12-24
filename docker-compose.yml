@@ -26,22 +26,22 @@ services:
             - sharedvolumeXX53:/apps/pterodactyl/
             #- ./files/etc/supervisor/conf.d/pterodactyl-worker.conf:/etc/supervisor/conf.d/pterodactyl-worker.conf
         environment:
-            - db_host=ark-sql1
-            - db_port=3306
-            - db_name=pterodb
-            - db_user=ptero
-            - db_pass=pterodbpassword
-            - panel_url=
-            - timezone=
-            - email_driver=
-            - panel_email=
-            - email_user=
-            - email_pass=
-            - email_domain=
-            - email_port=
-            - admin_email=
-            - admin_pass=
-            - admin_stat=1
+            - "db_host=ark-sql1"
+            - "db_port=3306"
+            - "db_name=pterodb"
+            - "db_user=ptero"
+            - "db_pass=pterodbpassword"
+            - "panel_url="
+            - "timezone="
+            - "email_driver="
+            - "panel_email="
+            - "email_user="
+            - "email_pass="
+            - "email_domain="
+            - "email_port="
+            - "admin_email="
+            - "admin_pass="
+            - "admin_stat=1"
         networks: 
             - web-network-01
     sql:
@@ -53,10 +53,10 @@ services:
             # Should we change the below volume location?
             - dbdata:/var/lib/mysql/
         environment:
-            - MYSQL_DATABASE=pterodb
-            - MYSQL_ROOT_PASSWORD=pterosqlpassword
-            - MYSQL_PASSWORD=pterodbpassword
-            - MYSQL_USER=ptero
+            - "MYSQL_DATABASE=pterodb"
+            - "MYSQL_ROOT_PASSWORD=pterosqlpassword"
+            - "MYSQL_PASSWORD=pterodbpassword"
+            - "MYSQL_USER=ptero"
         networks:
             - web-network-01
 volumes:
