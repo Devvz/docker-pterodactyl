@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     && ln -s /usr/bin/php70 /usr/bin/php \
     && ln -s /usr/bin/php70-phar /usr/bin/php-phar
 
-COPY ./files/ /
+COPY ./files /
 
 WORKDIR /apps/pterodactyl/
 
