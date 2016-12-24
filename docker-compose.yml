@@ -10,10 +10,10 @@ services:
             - "443:443"
         volumes:
             # The below location doesn't exist. Why? Because ./files is referring to the host, but additionally we never copied any files up for nginx.
-            - ./files/etc/nginx/sites-available/pterodactyl.conf:/etc/nginx/sites-available/pterodactyl.conf
+            - "./files/etc/nginx/sites-available/:/etc/nginx/sites-available/"
             # The below is a workaround for adding the symlink for sites-enabled.
-            - ./files/etc/nginx/sites-enabled/pterodactyl.conf:/etc/nginx/sites-enabled/pterodactyl.conf
-            - sharedvolumeXX53:/var/www/pterodactyl/html/public/
+            - "./files/etc/nginx/sites-enabled/:/etc/nginx/sites-enabled/"
+            - "sharedvolumeXX53:/var/www/pterodactyl/html/public/"
         networks:
             - web-network-01
     php:
@@ -23,8 +23,8 @@ services:
         hostname: ark-php1
         image: quay.io/xyelz/docker-pterodactyl
         volumes:
-            - sharedvolumeXX53:/apps/pterodactyl/
-            #- ./files/etc/supervisor/conf.d/pterodactyl-worker.conf:/etc/supervisor/conf.d/pterodactyl-worker.conf
+            - "sharedvolumeXX53:/apps/pterodactyl/"
+            #- "./files/etc/supervisor/conf.d/pterodactyl-worker.conf:/etc/supervisor/conf.d/pterodactyl-worker.conf"
         environment:
             - "db_host=ark-sql1"
             - "db_port=3306"
@@ -51,7 +51,7 @@ services:
         command: mysqld
         volumes:
             # Should we change the below volume location?
-            - dbdata:/var/lib/mysql/
+            - "dbdata:/var/lib/mysql/"
         environment:
             - "MYSQL_DATABASE=pterodb"
             - "MYSQL_ROOT_PASSWORD=pterosqlpassword"
@@ -60,8 +60,8 @@ services:
         networks:
             - web-network-01
 volumes:
-    sharedvolumeXX53:
-    dbdata:
+    "sharedvolumeXX53:"
+    "dbdata:"
 networks:
     web-network-01:
         driver: bridge
